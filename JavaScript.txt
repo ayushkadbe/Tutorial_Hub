@@ -1,0 +1,545 @@
+/*
+//CONSOLE
+//=======
+alert("Hello!");
+prompt("What's your name?");
+console.log(prompt("What's your name?"));
+console.log("This is a log:");
+console.info("This is a Info");
+console.warn("This is a warning");
+console.error("This is an error");
+
+
+//VARIABLES
+//=========
+//JS is a Dyanamic Programmic Language
+// var, let and const
+
+var x=5;
+const y = 10;  //constant variable
+
+if(true){
+    var x= 50;
+    const y = 100;
+    let z= 15;
+
+    console.log(x);
+    console.log(y);
+    console.log(z);
+}
+
+console.log(" ");;
+console.log(x);
+y=10;
+console.log(y);
+
+console.log(z); //scope of z is inside if ONLY
+
+
+//OPERATORS
+//=========
+//assigment, increment 
+var x=10;
+console.log(x);
+console.log(2+4);
+console.log(x++);
+console.log(x);
+console.log(x--);
+console.log(x);
+console.log(--x);
+console.log(x);
+console.log(++x);
+console.log(x);
+
+//DATATYPES
+//==========
+// String, Number(no floats, or decimals), Boolean, null(type is object), undefined
+//No need to specify Datatype, js runtime autodetects it
+
+
+let name= "ayush";
+let age = 19;
+let isProgrammer = true;
+let noValue = null;
+let unAssigned;
+
+console.log(typeof unAssigned);
+console.log(typeof age);
+console.log(typeof -1);
+console.log(typeof 0.3);
+console.log(3);
+
+
+
+//STRINGS & METHODS
+//=================
+
+let firstName = 'Ayush';
+let lastName = 'Kadbe';
+let languages = 'HTML,CSS,JS';
+let name = new String("Ayush Kadbe");
+
+console.log(typeof firstName);
+console.log(firstName.length);
+console.log(firstName.concat(lastName));
+console.log("My firstname is " + firstName + " and lastname is " + lastName);
+console.log(`My firstname is ${firstName} and lastname is ${lastName}`);
+console.log(languages.substring(0,6));  //letters from 0 index to 6 index
+console.log(languages.substring(1,6));   //letters from 1 index to 6 index
+console.log(languages.split(","));  //all elements 
+console.log(languages.split(",")[2]); //just element at 2nd index 
+
+
+
+//ARRAYS & METHODS
+//================
+
+let techstack = ["Javascript", "Flutter", "App Source", "Django"];
+let framework = new Array("Angular", "React", "Flutter");
+
+//access
+console.log(techstack[0]);
+console.log(framework);
+//change
+framework[0]= "Bootstrap";
+console.log(framework);
+//methods
+console.log(techstack.length);
+console.log(techstack.sort());
+//remove from last
+console.log(techstack.pop());
+console.log(techstack);
+//remove from first
+console.log(techstack.shift());
+console.log(techstack);
+//add from last
+techstack.unshift("Jquery");
+console.log(techstack);
+//add from first
+techstack.push("Python");
+console.log(techstack);
+//check
+console.log(typeof framework); //arrays and objects are primitive thus always treated as object
+console.log(Array.isArray(framework));
+console.log(framework instanceof Array);
+
+
+
+//OBJECTS IN JS
+//=============
+//HERE, employee is an OBJECT, address is an NESTED OBJECT, skills = ARRAY
+// and use : for assignment inside an OBJECT.
+//the elements inside are PROPERTIES
+let employee ={
+    id: 101,
+    firstName: "Aven",
+    lastName: "Kamron",
+    age: 19,
+    doj: "13/07/22",
+    //object
+    address: { 
+        city: "NewYork",
+        country: "Philipinnes",
+    },
+    //object/array
+    skills: ["HTML", "JAVA", "JS", "FLUTTER"],
+
+    //METHODS inside Objects
+    fullName: function(){
+        return `${this.firstName} ${this.lastName}`
+        
+    },
+
+    fullObject: function(){
+        console.log(this);
+              
+    },
+
+};
+
+//Accessing Object Properties
+console.log(employee.age);
+console.log(employee.address.city);
+console.log(employee.skills);
+console.log(employee.skills[1]);
+console.log(employee.fullName()); 
+//this refers to "calling" of the function
+console.log(this); //calling on window object
+console.log(employee.fullObject()); //calling on employee object
+
+//ES6 Destructuring
+const{firstName, age} = employee;
+console.log(firstName);
+console.log(age);
+
+
+
+
+//ARRAY OF OBJECTS
+//================
+
+let employee = [
+    //object 1
+    {
+        id: 101,
+        firstName: "Aven",
+        lastName: "Kamron",
+        age: 19,
+    },
+    //object 2
+    {
+        id: 102,
+        firstName: "Adam",
+        lastName: "Veron",
+        age: 20,   
+    },
+    //object 3
+    {
+        id: 101,    
+        firstName: "Tony",
+        lastName: "Stark",
+        age: 30,
+        address: {
+            city: "Paris",
+            country: "France",
+        },
+        skills: ["JAVA", "Javascript", "Dart", "C"],
+    },
+];
+
+console.log(employee[0]);
+console.log(employee[2].skills[1]);
+console.log(employee[2].address.city);
+
+
+//STRINGIFY this Array data to JSON STRING to send from FRONTEND to SERVER
+const employeeJSON = JSON.stringify(employee);
+console.log(employeeJSON);
+console.log(typeof employeeJSON);
+
+//PARSE this SERVER RECEIVED JSON STRING to Javascript Array of Objects
+const empArray = JSON.parse(employeeJSON);
+console.log(empArray);
+console.log(typeof empArray);
+
+
+
+//Loops in Javascript
+//===================
+
+let employees = [
+    //object 1
+    {
+        id: 101,
+        firstName: "Aven",
+        lastName: "Kamron",
+        age: 19,
+    },
+    //object 2
+    {
+        id: 102,
+        firstName: "Adam",
+        lastName: "Veron",
+        age: 20,   
+    },
+    //object 3
+    {
+        id: 103,    
+        firstName: "Tony",
+        lastName: "Stark",
+        age: 30,
+        address: {
+            city: "Paris",
+            country: "France",
+        },
+        skills: ["JAVA", "Javascript", "Dart", "C"],
+    },
+];
+
+//FOR loop
+let i;
+for(i=0;i< employees.length; i++){
+    console.log(employees[i].age);  //age of all objects inside array
+}
+
+for(i=0;i<employees.length; i++){
+    console.log(employees[i]);  //get all objects of array printed
+}
+
+for(let employee of employees){
+    console.log(employee.lastName);  //LastName of all objects
+}
+
+for(let employee of employees){
+    console.log(employee);    //get all objects of array printed
+}
+//while loop
+let j=0;
+while(j < employees.length){
+    console.log(employees[j].firstName);
+    j++;
+}
+
+//ES6 Array Methods for loops
+//===========================
+
+//FOREACH:  Loops an array to access/print it's objects
+employees.forEach(function (emp){
+    console.log(emp.lastName);
+});
+
+//MAP: After looping return a new Array of Objects
+const names = employees.map(function (emp){
+    return emp.firstName;
+});
+console.log(names);
+
+//FILTER: after looping filter the object for given condition
+const empDetails = employees.filter(function (emp){
+    return emp.id == "101"; //check
+});
+console.log(empDetails);
+
+//chaining of filter i.e just like Nested loops
+const empDetails2= employees.filter(function (emp){
+    return emp.id == "102"; //check
+}).map(function (emp){
+    return emp.lastName;
+});
+console.log(empDetails2);
+
+
+
+//CONDITIONS
+//==========
+
+//Since JS is a Dynamic type programming language(noneed to specify datatype)
+// == Equality  i.e Value Check on Both Sides (emplicit typecasting number x = string "x")
+// === Strict Checking  i.e Value Check as well as DataType Check on Both Sides
+
+let x =20;
+let y = 30;
+
+if(x == "20"){
+    console.log("x is enqual to 20");
+}else{
+    console.log("x is not equal to 20");
+}
+
+if(x === "20"){
+    console.log("x is equal to 20");
+}else{
+    console.log("x is not equal to 20");
+}
+
+if(x === 20 && y === 30){
+    console.log("Both condition are True"); 
+}else if(x < 20){
+    console.log("x is less than 20");
+}else{
+    console.log("x is more than 20 but not equal to 30");
+}
+
+if(x=== 20 || y === "30"){
+    console.log("One of the condition is true");
+}
+
+//ternary operator
+//condition ? iftrue then this : iffalse then this
+console.log((x === 10)? "True": "False");
+
+//SWITCH
+//======
+
+const dev = "JavaScript";
+
+switch(dev){
+    case "HTML":
+        console.log("I am a HTML developer");
+        break;
+    case "Python":
+        console.log("I am a Python developer");
+        break;
+    case "JavaScript":
+        console.log("I am a Javascript developer");
+        break;
+    default:
+        console.log("I am a begineer");
+}
+
+
+
+//FUNCTIONS
+//==========
+
+function myfunc(text, text1){
+    console.log(text);
+    console.log(text1);
+    console.log(text, text1);
+}
+console.log(myfunc("Good Morning", "Good Night"));
+
+//ESC Arrow function
+//syntax: 
+//const functionName = (argument) => {multiple statements}
+//const functionName = (argument) => single statement;
+
+const myfunc1 = (text, text1) => {
+    console.log(text);
+    console.log(text1);
+    console.log(text, text1);
+}
+console.log(myfunc1("Good Morning", "Good Night"));
+
+const myfunc2 = (x, y) => console.log(`${x}, ${y}`);
+console.log(myfunc2("Hello", "World"));
+
+
+
+//CONSTRUCTOR OBJECT & INSTANCE
+//=============================
+
+//constructor object > syntax is same as function but has a instance
+//constructor in JS = Class in Java
+function mobile(brand, launchDate,price){
+    this.brand = brand;
+    this.launchDate = new Date(launchDate);
+    this.price = price;
+}
+
+//instance of object = Class Object in Java
+mobile.prototype.ram = "8GB RAM";
+
+mobile.prototype.getLaunchYear = function (){
+    return this.launchDate.getFullYear();
+}
+
+mobile.prototype.getLaunchDay = function (){
+    return this.launchDate.getDay();
+}
+
+mobile.prototype.getLaunchDate = function(){
+    return this.launchDate.getDate();
+}
+const s1 = new mobile("Samsung", "11/12/2023", "$345");
+const s2 = new mobile("OneRock", "12/23/2027", "$342");
+
+//console the instance
+console.log(s1);
+console.log(s2);
+console.log(s2.getLaunchDay());
+console.log(s2.getLaunchDate());
+console.log(s2.getLaunchYear());
+
+
+//ES6 CONSTRUCTOR for Java Background people
+//==========================================
+
+class Mobile{
+    constructor(brand, launchDate, price){
+        this.brand = brand;
+        this.launchDate = new Date(launchDate);
+        this.price = price;      
+    }
+
+    getlaunchDay(){
+        return this.launchDate.getDay();
+    }
+}
+
+const s3 = new mobile("PikaPhone", "12/23/2027", "$342");
+
+console.log(s3);
+console.log(s3.getLaunchDay());
+
+
+
+//WINDOW OBJECT & DOM
+//===================
+//window = this
+//they show all Details of window having SET OF Functions like .location .animation etc etc
+console.log(window);
+console.log(window.URL);
+console.log(window.document); //gives html code
+console.log(this);
+console.log(this.location);
+
+//Single Element select
+console.log(document.getElementById('contact'));
+console.log(document.querySelector('body'));
+
+var requiredElement = document.getElementById('section');
+console.log(requiredElement);
+
+//Multiple Element select
+console.log(document.getElementsByClassName('items'));
+//can't apply for loop on these Array elements
+
+//Query selector: returns a NodeList on which we can apply for loops
+console.log(document.querySelectorAll('li'));
+
+//apply loops on dom elements USING NODELIST METHODS
+const nodelist = document.querySelectorAll('li');
+nodelist.forEach((node) => {
+   console.log(node);
+});
+
+
+//DOM MANUPULATION
+//========================
+
+Add TEXT to the body
+-----------------------
+
+const body = document.body
+body.append("Hello World", " Bye");
+
+Add ELEMENT to the body
+-----------------------
+*/
+document.getElementById("demo").innerHTML = "Hello World"
+
+//Element Search
+const element = document.getElementById("intro")
+
+//Change text
+document.getElementById("p1").innerHTML = "New Text";
+
+//write
+document.write(Date());
+
+//FORM VALIDATION
+==================
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <form id="form1">
+            Enter number between 1 to 10: <input type="number" id="numb">
+            <button type="button" onClick="myNum()">Submit</button>
+            <p id="output"></p>
+
+        </form>
+        <script>
+            function myNum(){
+            let x = document.getElementById("numb").value;
+            let text;
+            if(isNaN(x) || x< 1 || x>10){
+                text = "Input not valid";
+            }else{
+                text ="Input valid";
+            }
+            document.getElementById("output").innerHTML = text;
+        }
+        </script>
+</body>
+</html>
+
+
+

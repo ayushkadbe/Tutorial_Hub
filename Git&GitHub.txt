@@ -1,0 +1,141 @@
+git --help
+
+Open Terminal in Project
+
+git init  > create local git repo
+
+git add . > add files to repository
+
+git commit -m "First Commit" > commits that files with a message
+
+git branch -M main
+
+git remote add origin https://github.com/AyushKadbe/Startup_Namer_Flutter > link to github repository
+
+git push -u origin main  > pushes Local repository of project to the GITHUB hosted repository(empty bydefault)
+
+git push -f origin main
+
+git push --set-upstream origin branchName1
+//There are many branches created for a project on a device.
+//Then the branchName1 will be pushed to github as a new branch other than main branch.
+
+ 
+------------------
+Push another branch of same project
+
+git init
+git add .
+git commit -m "First Commit"
+git branch -M myapp
+git remote add origin https://github.com/AyushKadbe/
+git push -u origin myapp
+git push -f origin main
+git push --set-upstream orgin myapp
+
+--------------------
+Github Sub Module:
+It is just like a Repository embedded inside another repository while the embedded repository/Submodule redirects to its PROJECT Repository
+
+Parent Repository as well as Separate Repository of Project must be creted on Github.
+
+Open terminal of Git Parent Repository in VScode
+
+git submodule                                       
+┌─[infinitex@infinite]─[~/Documents/VScode/Flutter/Flutter-Notes-Programs]
+└──╼ $git submodule add https://github.com/AyushKadbe/Startup_Namer_Flutter
+
+git status
+git add .
+git commit -m "Add submodule"
+git push (push these changes to the Parent repository)
+
+https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github
+
+===================================================================
+Working Directory: Directory of Project you are currently working on
+
+Staging Area: A Project or directory has many files, so you can't commit all files at once due to some errors in some file,
+So you work on any file and add it staging area after editing/testing/debugging. 
+After collections of enough/required updated files in staging area, these file are commited to the Local Repository on Your Computer & Taken as a BackUP.
+
+Now after that you can push that file to Remote Repository on Server which hosts all code while different file/different directories are accessed and modified by other people,
+ who clone that Repository in their local Computer.
+
+Initialize A Project
+git init
+
+Check status like commits
+git status
+
+Add a edited single file for single feature of a Full Project tested in IDE or Code editor to the Staging Area
+git add <file> for checkpoint
+
+Git Commit: comite that Edited Files from Staging Area to Local Repository LOCAL BRANCH on own Computer
+git commit
+
+git commit -am""
+a for skipping staging area and m for message
+
+Unstage
+git rm --cached <file_name>
+
+New Branch
+git branch <branch_name>
+
+Swtich Branch
+git checkout<branch_name>
+
+Git Merge: merge a Working BRANCH to the LOCAL BRANCH on the Computer after testing&Debugging the Code
+git merge<branch_name>
+
+Git Fetch: Merge Change of LOCAL BRANCH to MAIN MASTER BRANCH after reviewing the code 
+git fetch
+
+Git Pull: Merge Changes of Git Local/Git working BRANCH to MASTER BRANCH Git Remote Repository
+
+Now everyone do not have access to MERGE TO MASTER BRANCH.
+They work on WORKING DIRECTORY > THEN ON LOCAL BRANCH on their PC
+Then they put a GIT PULL request to CODE REVIEWER, who review & analyse the Person's LOCAL REPO. CODE & after succesfull code, he/she MERGES 
+that LOCAL REPO. CODE to MAIN BRANCH.
+
+Access to merge to MAIN MASTER BRANCH is controlled ALTHOUGH LOCAL CLONES of REPOSITORY is still maintained on the LOCAL COMPUTER OF COLLABORATOR.
+
+============================================================
+git --help
+
+Open Terminal in Project
+
+git inti  > create local git repo
+
+git add . > add files to repository
+
+git commit -m "First Commit" > commits that files with a message
+
+git branch -M main
+
+git remote add origin https://github.com/AyushKadbe/Startup_Namer_Flutter > link to github repository
+
+git push -u origin main  > pushes Local repository of project to the GITHUB hosted repository(empty bydefault)
+
+--------------------
+Github Sub Module:
+It is just like a Repository embedded inside another repository while the embedded repository/Submodule redirects to its PROJECT Repository
+
+Parent Repository as well as Separate Repository of Project must be creted on Github.
+
+Open terminal of Git Parent Repository in VScode
+
+git submodule                                       
+┌─[infinitex@infinite]─[~/Documents/VScode/Flutter/Flutter-Notes-Programs]
+└──╼ $git submodule add https://github.com/AyushKadbe/Startup_Namer_Flutter
+
+git status
+git add .
+git commit -m "Add submodule"
+git push (push these changes to the Parent repository)
+
+
+============================================================
+
+

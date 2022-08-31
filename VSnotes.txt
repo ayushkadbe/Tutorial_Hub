@@ -1,0 +1,12 @@
+SHORTCUTS:
+shift + != HTML Boilerplate
+for typing same word/sentence repetatively before consecutive lines.
+	KEEP PRESSING Alt + Shift DOWN/UP button to select lines. => then start typing.
+Auto Correct:         Shift + Alt + .
+Copy Line Up:         Ctrl + C + Up
+Copy Line Down:       Ctrl + C + Down
+Quick Fix             Ctrl + .
+Run By language       Ctrl + Alt + J
+Run Code              Ctrl + Alt + N
+Run Custom Code       Ctrl + Alt + K
+Stop Run Code         Ctrl + Alt + M

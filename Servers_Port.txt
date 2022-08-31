@@ -1,0 +1,10 @@
+Servers and Port Numbers--
+
+command:
+c:\netstat -ao -p tcp
+
+netstat -aon | findstr :80
+
+Apache 2.4.56  http://localhost/
+
+Django Local Server             http://127.0.0.1:8000/    http://localhost:8000/

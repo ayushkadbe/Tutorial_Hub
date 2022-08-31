@@ -1,0 +1,228 @@
+MOVE FILE
+
+┌─[infinitex@infinite]─[~]
+└──╼ $sudo su
+[sudo] password for infinitex: 
+┌─[root@infinite]─[/home/infinitex]
+└──╼ #cd conio.h
+┌─[root@infinite]─[/home/infinitex/conio.h]
+└──╼ #mv conio.h /usr/include
+┌─[root@infinite]─[/home/infinitex/conio.h]
+------------------------------------------
+PERMISSION:
+
+You need super permissions to execute this modification if your session user does not own the directory.
+
+$ sudo chmod -R 777 /path/to/directory
+The mod 777 set read/write and execution to directory for every users on the system. The R option applies recursively the modification to every files and sub-directories. So, you can change the permission of all the contents of your htdocs directory all at once.
+
+------------------------------------------
+The main functions of a package manager must be:
+
+Software searching
+Software installation
+Software update
+System update
+Dependency management
+Software removal
+The package manager must check in a given location (it can be a local directory or a network address) for the availability of such software. The locations are called repositories. The system maintains configuration files to check repository locations.
+
+List of Repositories
+Although in Parrot it is not necessary (nor recommended) to add new repositories or modify existing ones, we will see where we can configure them. In the file system, under the path "/etc/apt/sources.list.d", we find the file parrot.list. The content of this file should be:
+
+
+## stable repository
+deb http://deb.parrotsec.org/parrot stable main contrib non-free
+#deb-src http://archive.parrotsec.org/parrot stable contrib non-free
+With this, we make sure we have the correct repository list. In this location the Parrot developers keep the packages updated.
+
+Package Manager (APT)
+The Parrot package manager is apt. Amongst other things,this manager is responsible for installing packages, checking dependencies, and updating the system. Let's see what we can do with it. We will see the most common options below. For more in-depth instructions, view the man pages for each of the following commands: apt, apt-get, apt-cache, dpkg.
+
+Search for a package or text string:
+
+
+apt search <text_string>
+
+Show package information:
+
+
+apt show <package>
+
+Show package dependencies:
+
+
+apt depends <package>
+
+Show the names of all the packages installed in the system:
+
+
+apt list --installed
+
+Install a package:
+
+
+apt install <package>
+
+Uninstall a package:
+
+
+apt remove <package>
+
+Delete a package including its configuration files:
+
+
+apt purge <package>
+
+Delete automatically those packages that are not being used (be careful with this command, due to apt's hell dependency it may delete unwanted packages):
+
+
+apt autoremove
+
+Update the repositories information:
+
+
+apt update
+
+Update a package to the last available version in the repository:
+
+
+apt upgrade <package>
+
+Update the full distribution. It will update our system to the next available version:
+
+
+parrot-upgrade
+
+Clean caches, downloaded packages, etc:
+
+
+apt clean && apt autoclean
+
+These are just some examples. If more information is required, you should check the manual page (man 8 apt).
+
+------------------------------------------
+sudo can be used with additional options:
+
+-h – help; displays syntax and command options
+-V – version; displays the current version of the sudo application
+-v – validate; refresh the time limit on sudo without running a command
+-l – list; lists the user’s privileges, or checks a specific command
+-k – kill; end the current sudo privileges
+-u - login as root
+-i
+----------------------------------------
+SUDO SU
+
+└──╼ $sudo su --help
+[sudo] password for infinitex: 
+
+Usage:
+su [options] [-] [<user> [<argument>...]]
+
+Change the effective user ID and group ID to that of <user>.
+A mere - implies -l.  If <user> is not given, root is assumed.
+
+Options:
+-m, -p, --preserve-environment      do not reset environment variables
+-w, --whitelist-environment <list>  don't reset specified variables
+
+-g, --group <group>             specify the primary group
+-G, --supp-group <group>        specify a supplemental group
+
+-, -l, --login                  make the shell a login shell
+-c, --command <command>         pass a single command to the shell with -c
+--session-command <command>     pass a single command to the shell with -c
+and do not create a new session
+-f, --fast                      pass -f to the shell (for csh or tcsh)
+-s, --shell <shell>             run <shell> if /etc/shells allows it
+-P, --pty                       create a new pseudo-terminal
+
+-h, --help                      display this help
+-V, --version                   display version
+
+For more details see su(1).
+
+-----------------------------------------
+SUDO LOGIN
+
+sudo -i
+#login as root@infinite
+
+exit
+
+sudo -i -u infinitex
+#login as infintex@infinite
+
+sudo -i -u postgres
+#login as postgres default user and then we can use psql command
+
+------------------------------------------
+SWITCH USER
+
+sudo su - postgres
+
+sudo su - infinitex
+
+sudo bash
+------------------------------------------
+USER DELETE
+
+userdel and deluser utility
+
+userdel username
+
+remove
+userdel -r username
+
+kill all process
+sudo killall -u username
+
+force delete
+userdel -f username
+
+sudo deluser username
+sudo deluser --remove-home username
+-------------------------------------------
+USER ADD 
+
+sudo adduser username
+
+
+
+-------------------------------------------
+$ sudo systemctl status PostgreSQL
+
+$ sudo systemctl stop PostgreSQL
+
+$ sudo systemctl start PostgreSQL
+
+sudo service postgresql start
+sudo service postgresql stop
+sudo service postgresql start
+sudo service postgresql enable
+
+sudo service
+sudo systemctl
+
+sudo update-rc.d postgresql enable
+
+GETTING STARTED WITH PostgreSQL ON Parrot OS (Debian based)
+
+Step 1: switch to the postgres user
+
+sudo su - postgres
+
+
+┌─[✗]─[infinitex@infinite]─[~]
+└──╼ $sudo -i -u postgres
+┌─[postgres@infinite]─[~]
+└──╼ $psql
+psql (13.7 (Debian 13.7-0+deb11u1))
+Type "help" for help.
+
+postgres=#
+-------------------------------------------
+NANO EDITOR:
+
+sudo nano /etc/postgresql/13/main/pg_hba.conf

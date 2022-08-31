@@ -1,0 +1,573 @@
+https://www.tutorialspoint.com/data_structures_algorithms/dsa_queue.html
+
+DATA STRUCTURE affects the design of both structural & functional aspects of a program.
+Program=Algorithm + Data Structure
+==============
+SPECIFIERS:
+
+https://cplusplus.com/reference/cstdio/printf/
+
+specifier	Output	Example
+d or i	Signed decimal integer	392
+u	Unsigned decimal integer	7235
+o	Unsigned octal	610
+x	Unsigned hexadecimal integer	7fa
+X	Unsigned hexadecimal integer (uppercase)	7FA
+f	Decimal floating point, lowercase	392.65
+F	Decimal floating point, uppercase	392.65
+e	Scientific notation (mantissa/exponent), lowercase	3.9265e+2
+E	Scientific notation (mantissa/exponent), uppercase	3.9265E+2
+g	Use the shortest representation: %e or %f	392.65
+G	Use the shortest representation: %E or %F	392.65
+a	Hexadecimal floating point, lowercase	-0xc.90fep-2
+A	Hexadecimal floating point, uppercase	-0XC.90FEP-2
+c	Character	a
+s	String of characters	sample
+p	Pointer address	b8000000
+n	Nothing printed.
+The corresponding argument must be a pointer to a signed int.
+The number of characters written so far is stored in the pointed location.	
+%	A % followed by another % character will write a single % to the stream.	%
+
+
+
+specifiers
+length	d i  	u o x X	                      f F e E g G a A	  c	  s	  p   	n
+
+(none)	int	          unsigned int	          double	         int	char*	 void*	int*
+hh	    signed char	  unsigned char					                             signed char*
+h	    short int	  unsigned short int					                     short int*
+l	    long int	  unsigned long int		                      wint_t wchar_t* long int*
+ll	    long long int unsigned long long int					                 long long int*
+j	    intmax_t	  uintmax_t					                                 intmax_t*
+z	    size_t	      size_t					                                 size_t*
+t	    ptrdiff_t	  ptrdiff_t					                                 ptrdiff_t*
+L		                                      long double				
+
+==============
+DATA STRUCTURE
+==============
+  --PRIMITIVE
+      --INTEGER
+      --FLOAT
+      --CHARACTER
+      --POINTER
+  --NON-PRIMITIVE
+      --LINEAR
+          --ARRAY
+          --LINKED LIST
+          --STACK
+          --QUEUE
+      --NON-LINEAR
+          --TREES
+              --BINARY SEARCH TREE
+              --AVL TREE
+          --GRAPH
+  
+ALGORITHMS:
+===========
+
+
+Algorithm
+DSA - Algorithms Basics
+DSA - Asymptotic Analysis
+DSA - Greedy Algorithms
+DSA - Divide and Conquer
+DSA - Dynamic Programming
+
+Data Structures
+DSA - Data Structure Basics
+DSA - Array Data Structure
+
+Linked Lists
+DSA - Linked List Basics
+DSA - Doubly Linked List
+DSA - Circular Linked List
+
+Stack & Queue
+DSA - Stack
+DSA - Expression Parsing
+DSA - Queue
+
+Searching Techniques
+DSA - Linear Search
+DSA - Binary Search
+DSA - Interpolation Search
+DSA - Hash Table
+
+Sorting Techniques
+DSA - Sorting Algorithms
+DSA - Bubble Sort
+DSA - Insertion Sort
+DSA - Selection Sort
+DSA - Merge Sort
+DSA - Shell Sort
+DSA - Quick Sort
+
+Graph Data Structure
+DSA - Graph Data Structure
+DSA - Depth First Traversal
+DSA - Breadth First Traversal
+
+Types of Graphs:
+Directed graph
+Undirected graph
+Simple graph
+Weighted graph
+Connected graph
+Non-connected graph
+
+Tree Data Structure
+DSA - Tree Data Structure
+DSA - Tree Traversal
+DSA - Binary Search Tree
+DSA - AVL Tree
+DSA - Spanning Tree
+DSA - Heap
+
+Recursion
+DSA - Recursion Basics
+DSA - Tower of Hanoi
+DSA - Fibonacci Series
+
+
+==================================================================================
+ARRAY: Array is DATA TYPE which STORES SAME TYPE OF DATA, it's a SEQUENTIAL REPRENTATION OF LIST.
+
+length = (Upperbound-lowerbound)+1
+
+Implimentation: USING ARRAY
+For example: Reading an array
+For(i=0;i<=9;i++)
+scanf(“%d”,&arr[i]);
+For example: Writing an array
+For(i=0;i<=9;i++)
+printf(“%d”,arr[i]);
+
+CREATE ARRAY
+TRAVERSE ARRAY
+INSERT
+DELETE
+MODIFICATION OF ELEMENT
+MERGING OF ARRAYS
+==================================================================================
+
+C POINTERS:
+
+Every variable = memory location
+memory location = address addressed by &
+Pointer variable stored the address of another variable.
+Pointer is a variable = assigned value is value at address of another variable.
+syntax of declaring Pointer: type *var;
+
+*p is a pointer variable, it stores the address of another variable as VALUE
+p give p's value, which is addres of var1
+*p give var1's value.
+
+%d, p
+
+* = DEREFENCING
+p = POINTER
+
+&n gives address of variable n
+p give address of assigned variable
+*p gives value at address of assigned variable/indicates value that is stored in particular address
+&p give address of pointer
+
+* is used to 
+    -- declare pointer variable 
+    -- get address of another variable   
+& is used to assign & get address of a variable.
+%x is used for printing pointers.
+
+int var1 = 230;                //var1 stores 230,    &var1 stores its address
+int *pvar;                     //pvar stores address (i.e address of var1)      
+*ip stores value of var1 i.e *ip = 230
+*pvar = &var1;
+
+int main() {
+    int var1= 345;
+    int var2[10];
+    int *pvar = &var1;
+    int *pvar1;
+  
+    printf("\nAddress of var1 %d", &var1);
+    printf("\nAdress of pointer variable pvar %d", pvar);
+    printf("\nAddress of pointer variable pvar1 %d", pvar1);
+    
+    printf("\nValue of var1 %d", var1);
+    printf("\nValue of pointer variable pvar %d", *pvar);
+    printf("\nValue of pointer variable pvar1 %d", pvar1);
+    
+}
+
+OUTPUT:
+Address of var1 6422292
+Adress of pointer variable pvar 6422292
+Address of pointer variable pvar1 0
+Value of var1 345
+Value of pointer variable pvar 345
+Value of pointer variable pvar1 0
+
+POINTER EXPRESSIONS
+-------------------
+
+
+Arithmetic Operators
+--------------------
+*ptr1 + *ptr2
+*ptr1 * *ptr2
+*ptr1 + *ptr2 - *ptr3
+We can also directly perform arithmetic expression using integers. Lets look at the example given below where p1 and p2 are pointers.
+
+p1+10, p2-5, p1-p2+10, p1/2 
+
+printf("\n %d", *p2+*p1);
+printf("\n %d", *p4-*p1);
+printf("\n %d",*p4 - *p2 - *p1);
+printf("\n %d", *p1 * 2);
+printf("\n %d", *p4/3); //quotient
+printf("\n %d", *p4%3); //remainder
+
+add = *ptr_a + *ptr_b;
+sub = *ptr_a - *ptr_b;
+mul = *ptr_a * *ptr_b;
+div = *ptr_a / *ptr_b;
+mod = *ptr_a % *ptr_b;
+
+Relatonal Operators
+-------------------
+*ptr1 > *ptr2
+*ptr1 < *ptr2
+*ptr1 <= *ptr2
+*ptr1 >= *ptr2
+*ptr1 == *ptr2
+*ptr1 != *ptr2
+
+use inside if statement as condition
+
+Assignment Operators
+--------------------
+*a += 10
+*a -= 10
+*a /= 10
+*a *= 10
+*a %= 10
+
+Conditional Operators
+---------------------
+expression1 ? expression 2 : expression3;
+
+c = (*ptr1 > *ptr2) ? *ptr1 : *ptr2;
+
+POINTER ARITHMETICS /Unary Operators
+-------------------
+*p++
+(*p)++
+*++p
+++*p
+
+*p--
+(*p)--
+*--p
+--*p
+
+** Increment operator
+-- Decrement operator
+
+a=10;
+a++;  //Assign First > Then Increment Prefix R > L
+++a;  //Increment First > Then Assign Postfix L > R
+
+Postfix ++
+----------
+i.e ++a has High Precedence than *(derefrence used to acces value of pointer pointing to var) & prefix a++
+Associativity: Left to right
+
+Prefix ++
+---------
+i.e a++ has Same Precedence as *
+Associativity: Right to Left
+
+same goes for a-- & --a
+
+
+//++*p is equivalent to ++ (*p). Pre-increment of value
+//increment first the value & assign to BOTH current as well as Next.
+//Associativity: L to R  1)++ increment 2) of *p i.e increment of value
+
+
+//*p++ will be equivalent to *(p++). Post-increment of address
+//Assign first to current > then increment of address to next
+//Associativity: R to L  1)++ increment 2) of p i.e increment of address, * is separated so it's not *p(value at address) but the p(the address)
+
+
+//*++p is equivalent to *(++p). Pre-increment of address
+//increment first the address & assign to BOTH current as well as Next.
+//Associativity: L to R  1)++ increment 2) of p i.e increment of address
+
+//(*p)++
+//Assign first to current > then increment of value to next
+//Associativity: R to L 1)++ increment 2) of (*p) i.e increment of value
+
+Bitwise Operators
+-----------------
+*ptr1 & *ptr2
+*ptr1 | *ptr2
+*ptr1 ^ *ptr2 bitwise or exclusive
+*ptr1 << *ptr2 shift left
+*ptr1 >> *ptr2
+*ptr1 ~ *ptr2 complement(one's)
+
+POINTER TO ARRAY
+----------------
+*ptr = &arr[i];
+
+Access elements of array using pointer:
+--------------------------------------
+Points to the 0th 1-D array, arr + 1 points to the 1st 1-D array and arr + 2 points to the 2nd 1-D array
+
+//Access Array Element List using pointer
+----------------------------------------
+for(i=0;i<n;i++){
+	printf(" %d",*(arr + i));
+}
+printf("\n");
+//OR
+
+int *ptr = &arr[i];
+for(i=0; i<n; i++){
+	printf(" %d", arr[i]);
+}
+
+//Access individual elments of array using pointer
+//i. A[i] ii.&A[i] iii.ptr iv.*ptr v.*(A+i) vi. i[A]
+
+printf("\n %d", *(arr));         //arr[0] = *(arr) and &arr[0] = arr
+                                 -----------------------------------
+printf("\n %d", *(arr + 1));     //arr[1] = *(arr + 1) and &arr[1] = arr + 1
+
+printf("\n Change Element 3:");
+scanf("\n %d", &arr[2]);         //arr[2] = *(arr = 2) and &arr[2] = arr + 2
+printf("\n %d", *(arr + 2));
+
+//Using *ptr directly for access elments of array
+-------------------------------------------------
+//sum = sum + *ptr     as *ptr = arr; (not *ptr = &arr[i]) and each of an array is access using *ptr and increment using ptr++
+
+EXAMPlE:
+Write a ‘C’ program to accept ‘n’ integers and find sum of that integers
+using pointer
+
+#include <stdio.h>
+#include <stdlib.h>
+int main(){
+	int array[5];
+	int i,sum=0;
+	int *ptr;
+	printf("Enter array elements (5 integer values):");
+	for(i=0;i<5;i++)
+		scanf("%d",&array[i]);
+	ptr = array;
+	for(i=0;i<5;i++){
+		sum = sum;
+		ptr++;
+	}
+	printf("\nThe sum is: %d",sum);
+}
+
+
+
+Example:
+//C Program to accept elements of array and use Pointer Variable to access elements
+/*
+ P*ointer to Array*/
+
+#include <stdlib.h>
+#include <stdio.h>
+
+int main(){
+	int n,i;
+	printf("Enter the number of elements:");
+	scanf("%d", &n);
+	int arr[n];
+	
+	printf("Enter elements:");
+	for(i=0; i<n; i++){
+		scanf("%d", &arr[i]);
+	}
+	
+	//Access Array Element List using pointer
+	for(i=0;i<n;i++){
+		printf(" %d",*(arr + i));
+	}
+	printf("\n");
+	//OR
+	
+	int *ptr = &arr[i];
+	for(i=0; i<n; i++){
+		printf(" %d", arr[i]);
+	}
+	
+	//Access individual elments of array using pointer
+	//i. A[i] ii.&A[i] iii.ptr iv.*ptr v.*(A+i) vi. i[A]
+	
+	printf("\n %d", *(arr));         //arr[0] = *(arr) and &arr[0] = arr
+	printf("\n %d", *(arr + 1));     //arr[1] = *(arr + 1) and &arr[1] = arr + 1
+	
+	printf("\n Change Element 3:");
+	scanf("\n %d", &arr[2]);         //arr[2] = *(arr = 2) and &arr[2] = arr + 2
+	printf("\n %d", *(arr + 2));
+	
+	
+	
+	
+}
+
+POINTER TO ARRAY OF FUNCTION:
+Basically, an array of the function is an array which contains the addresses of functions. In other words, the pointer to an array of functions is a pointer pointing to an array which contains the pointers to the functions. Consider the following example.
+
+. 
+
+-----------------------
+TYPES:
+The syntax for the pointer is as follows −
+
+pointer = &variable;
+Types of Pointers
+There are eight different types of pointers which are as follows −
+
+Null pointer
+
+Void pointer/generic (no data type, typcasted to any data type)
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+	int a=10;
+	float b=34;
+	
+	void *ptr= &a;
+	void *ptr1= &b;
+	
+	printf("\n Integer Value: %d", *(int*)ptr);
+	printf("\n Float Value: %.2f", *(float*)ptr1);
+}
+
+Wild pointer/uninitialized (may cause program to crash as it points to any random memory location)
+
+Dangling pointer
+
+Complex pointer
+
+Near pointer
+
+Far pointer
+
+Huge pointer
+
+================================================================================
+STRUCTURE:
+structure is a type of data type which stores elements of DIFFERENT DATA TYPES IN IT.
+
+SELF REFERENTIAL STRUCTURE:
+It's a Structure which contains a pointer to a structure of the same type.
+
+we can use STRUCTURE to combine to DIFFERNET DATA TYPES In a same type by CREATING A STRUC NODE
+
+e.g. 
+struct abc{
+	int a;
+	int b;
+	struct abc *self;
+};
+
+struct node{
+	int data;
+	struct node *next;
+};
+
+struct node{
+	int data;
+	struct node *link;
+}
+
+HERE, *self, *next, *link is POINTER TO ANOTHER NODE i.e IT STORES ADDRESS OF another NODE.
+
+================================================================================
+LIST:
+An element of list must contain at least two fields, one for storing data or information and other for storing address of next element
+
+
+LINKED LIST:
+
+Linked List is a linear Data Structure where NODES/ELEMENTS created are allocated at any random location in a memory. When a head node /temp node/ any n node is connects to another node using n node -> = n2 node, then
+the link is created between those two NODES and thus creates a LINKED List.
+
+Linked List as well as Array both are LINEAR DATA STRUCTURE but in Array you have to DO N no. of operatinos for TRAVERSING/SHIFTING NO./INSERTING ANY N NO. IN BETWEEN THE LIST, while it can be easilyi LINKED LIST by just defing next of n node connecting to another node. When inserting a new element/node at a position in between a linked list the element at that position as well as elements next to it shifts one node ahead, while in Array there is no shifting of element if one middle element is deleted it's fulfilled by other elements that space is not empty while if any new element is inserted at any position, the previous element GETS DELETED, it doesn't shift by default.
+
+IN LINKED LIST there is no INDEXING SO, to insert a NODE at ANY POSITION YOU HAVE TO REACH BEFORE OF AFTER NODE'S POINTER OF THAT PARTICULAR POSITION. like at previous of n node or next of n node, IF THERE IS GAP BETWEEN TWO NODES, then you LOOSE 
+REFERENCE TO ANOTHER NODE AS THERE IS NO CONNECTION CREATED WHEN YOU WERE BEFORE OF AFTER THAT NODE, AS NOW YOU ARE NOT BEFORE/AFTER THAT NODE, SO LOST LINK TO THAT NODE.
+
+You also have to PREDEFINE ARRAY SIZE for PREALLOCATING ARRAY MEMORY then Elements can be added, while IN LINKED LIST a SINGLE NODE CAN BE CREATED AND MEMORY CAN ALLOCATED, and same like that ANY NEW NODE CAN BE CREATE, memory allocated and connected to previous nodes by n node -> next = new node OR new node -> previous = n node.
+
+There are various operations that can be done on a linked list, like:
+
+create()
+display()
+insert_begin()
+insert_end()
+]insert_pos()
+delete_begin()
+delete_end()
+delete_pos()
+================================================================================
+SINGLY LINKED LIST: 
+It's a LINKE REPRESENTAION OF LIST, WHERE EACH NODE CONTAINS ADDRESS OF IT'S NEXT NODE, each node is connected using LINK part of the NODE. Navigation is FORWARD only we can go forward but not backward. We can't go from END NODE to FIRST NODE, but we can go from FIRST NODE TO END NODE
+
+A NODE consists of two parts: DATA & LINK/ADDRESS OF NEXT NODE.
+You can ACCESS OTHER NODES in LINKED LIST(i.e EACH node contains the ADDRESS OF NEXT NODE in its SECOND PART) if we the ADDRESS OF FIRST NODE.
+WE can ACCESS the FIRST NODE using a POINTER CALLED HEAD, if it contains the address of FIRST NODE.
+
+
+================================================================================
+CIRCULAR LINKED LIST:
+================================================================================
+DOUBLE LINKED LIST:
+================================================================================
+CIRCULAR DOUBLE LINKED LIST:
+================================================================================
+STACK: LIFO
+
+A stack is also an ordered collection of elements like arrays, but it has a special feature that deletion and insertion of elements can be done only from one end called the top of the stack (TOP)
+Due to this property it is also called as last in first out type of data structure (LIFO).
+
+PUSH
+POP
+
+IMPLIMENTATION:
+* Using arrays (Static implementation)
+* Using pointer (Dynamic implementation)
+================================================================================
+QUEUE: FIFO, REAR(INSERT), FRONT(DELETE)
+
+Queue are first in first out type of data structure (i.e. FIFO)
+In a queue new elements are added to the queue from one end called REAR end and the element are always
+
+IMPLIMENTATION:
+* Using arrays (Static implementation)
+* Using pointer (Dynamic implementation)
+
+===============================================================================
+TREES:
+
+A tree can be defined as finite set of data items (nodes).
+Tree is non-linear type of data structure in which data items are arranged or stored in a sorted sequence.
+Tree represent the hierarchical relationship between various elements.
+
+===============================================================================
+GRAPH:
+
+* Graph is a mathematical non-linear data structure capable of representing many kind of physical structures.
+* An edge connects a pair of vertices and many have weight such as length, cost and another measuring instrument for according the graph.
+* Vertices on the graph are shown as point or circles and edges are drawn as arcs or line segment.

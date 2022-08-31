@@ -1,0 +1,55 @@
+//Lets Learn Python
+DATATYPES OF Python
+===================
+Text:      str
+Numeric:   int, float, complex
+Sequence:  list, tuple , range
+Mapping:   dict
+Set:       set, frozenset
+boolean:   bool
+binary:    bytes, bytearray, memoryview
+
+x = float(20.4)
+print(x)
+
+#list[] , tuple(), set{}, dict{string int}, frozenset({})
+
+a = list(("apple", "banannann", "orange"))
+print(a)
+
+b = tuple(("apple","banana"))
+print(b)
+
+c = set (("apple", "banana"))
+print(c)
+
+d = frozenset(("apple", "banana"))
+print(d)
+
+e = dict(name = "Ayush", age = 19)
+print(e)
+
+#CASTING: Specify a Type on a Variable
+======================================
+
+a = int(2)  #int
+b = int("4")  #string
+c = int(5.3)  #float
+
+print(a,b,c)
+
+d = str(3)
+e = str(4.3)
+f = str("6")
+print(d, e, f)
+
+#String is a Array of Chracters. [] can be used to access elements of String Array
+#Char is just a String of Size 1
+
+print(a[3])
+
+#Looping Throught the LETTERS in WORD ==> Vertical Printing of Letters of Word
+
+for x in "BANANANANANANA":
+    print(x)
+

@@ -1,0 +1,1375 @@
+adb tcpip 5555
+adb connect 192.168.1.22:5555
+
+flutter upgrad
+flutter pub get
+flutter pub upgrade
+flutter pub get badges
+flutter create .
+
+FLUTTER TUTORIAL
+=================
+FLUTTER APP STRUCTURE:
+
+* In flutter everything is a widget
+* Every widget can maintain it's state as in background it extends statefulwidget
+* While Flutter App Development, you don't have to REMEMBER EACH AND EVERYTHING,
+* You have to type .propertyName & search for different properties available in Scrolling, read what it
+  does, can it be used, then docs for how it can be used.
+* We run the app using main.dart file
+* BuildContext is the location/context of the widget/element on the screen. & context is itself the element you are using it in. Thus BuildContext is the location of context
+* We create different pages by creating home_page.dart or login_page.dart inside lib/pages/ folder
+* Routing: initially everything is at "/",  "/home" for home page,  "/login" for login page
+* CODE REUSE: 
+  ----------
+  -> If you want to use Same Code for a particular function or style then CREATE a separate widget for it & call it everywhere.o
+  -> You can create a new file theme.dart oranything, then create theme class & put code in it, this can be called anywhere in app.
+* WIDGET SIZING:
+  -------------
+  -> Constraints Go Downwards.
+  -> Sizes Go Upwards
+  -> Parents sets postions. ("Parent Widget" Overwrites Constrainst & Sizes of "Child Widget")
+  
+* React Native uses Native Widgets which are the part of the operation system. But FLUTTER draws its own Widgets on the CANVAS/app screen using its 3 THREES.
+* FLUTTER TREES:
+ > Widget Tree(we write in widget tree. It is Immutable, it gets erased and new widget is formed once BuildContext is called)
+ > Elemental Tree(It tells the Render tree what to draw. it checks the widget tree and new changes, it checks datatypes etc, then UPDATES itself.)
+ > Render Tree(it renders or draw what the element tree tells itself.)
+
+* EXRACT WIDGET:
+  like creating a piece of code or function like button or any other mehtod into a STATELESS WIDGET, 
+   which can also be converted to STATEFUL WIDGET if we wanna use it AS INSTANCE.
+=====================================================
+CLEAN CODE FORMAT:
+
+flutter bloc vs provider VS redux
+flutter block miniversion Qbit
+======================================================
+THEME, FONTS & ROUTING
+in THEME specified in THEMES.dart we can set UNIVERSAL DEFAULT style for buttons, text, card etc.
+
+main.dart
+import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:myapp/pages/login_page.dart';
+import 'package:myapp/utils/routes.dart';
+import 'pages/home_page.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+	@override
+	Widget build(BuildContext context) {
+		return MaterialApp(
+			//THEME
+			themeMode: ThemeMode.light,
+			theme: ThemeData(primarySwatch: Colors.blue),
+						   darkTheme: ThemeData(
+							   brightness: Brightness.dark,
+							  //
+							  fontFamily: GoogleFonts.lato().fontFamily, //whole app
+												primaryTextTheme:
+												GoogleFonts.latoTextTheme(), //only primary text of whole app
+						   ),
+					 
+					 //ROUTES: {Map<String, Widget Function(BuildContext)> routes = const <String, WidgetBuilder>{}}
+					 initialRoute: "/",
+					 routes: {
+						 //routes are stored in utils/routes.dart > called on main.dart
+						 MyRoutes.homeRoute: (context) => HomePage(),
+						   "/login": (context) => const LoginPage(),
+					 },
+		);
+	}
+}
+
+lib/utils/routes.dart
+//create any random CLASS TO STORE STATIC ROUTES variable (no need to create object)
+class MyRoutes {
+	static String loginRoute = "/login";
+	static String homeRoute = '/home';
+}
+
+
+NAVIGATION ROUTING ALOGIRTHM FOR APP:
+------------------------------------
+Add Routes in Routes.dart
+Add Routes in Main.dart
+Page1 From where you have to navigate to Page2
+Page1 contains
+onPressed: ()=> Navigator.pushNamed(context, MyRoutes.cartRoute)
+
+
+DARK THEME WITH TOGGLE ALGORITHM:
+---------------------------------
+1) Add static color variables in themes.dart
+2) create lightTheme & darkTheme widgets
+3) call default Theme on Main.dart using theme 
+   or if You Want theme according to SYSTEM "themeMode: ThemeMode.light,  or ThemeMode.system"
+4) call theme on homePage & otherPage like
+   backgroundColor: Theme.of(context).cardColor     //cardColor is different for light & dark theme, it will show based on what CURRENT THEME IS USED.
+
+main.dart
+
+class MyApp extends StatelessWidget {
+	@override
+	Widget build(BuildContext context) {
+		return MaterialApp(
+			//preview
+			// useInheritedMediaQuery: true,
+			// locale: DevicePreview.locale(context),
+			// builder: DevicePreview.appBuilder,
+			//THEME
+			themeMode: ThemeMode.light,
+			theme: MyTheme.lightTheme(context),
+						   darkTheme: MyTheme.darkTheme(context),
+ ---------------------
+themes.dart
+
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+class MyTheme{
+	static ThemeData lightTheme(BuildContext context) => ThemeData(
+		primarySwatch: Colors.blue,
+		fontFamily: GoogleFonts.poppins().fontFamily,
+																   appBarTheme: const AppBarTheme(
+																	   color: Colors.white,
+												  elevation: 0.0,
+												  iconTheme: IconThemeData(color: Colors.black),    
+																   ),
+	);
+	
+	static ThemeData darkTheme(BuildContext context) => ThemeData(
+		fontFamily: GoogleFonts.poppins().fontFamily,
+																  cardColor: darkColor,
+															   canvasColor: darkColor,
+															   appBarTheme: const AppBarTheme(
+																   color: Colors.black,
+												 elevation: 0.0,
+												 iconTheme: IconThemeData(color: Colors.black),    
+															   ),
+	);
+	
+	//COLORS:
+	static Color creamColor = Color(0xfff5f5f5);
+	static Color darkColor = Color.fromARGB(0, 44, 43, 43);
+	static Color lightBlue = Color.fromARGB(0, 45, 129, 255);
+	static Color darkBlue = Color(0xff403b58);
+	
+	
+}
+
+=========================================================
+classes:
+--------
+Dart classes are the blueprint of the object, or it can be called object constructors. A class can contain fields, functions, constructors etc. 
+-contain members, functions, methods and properties.
+-Every object is an instance of a class,
+
+NAMING IDENTIFIERS:
+-------------------
+CLASS: Use the class keyword to declare a class in Dart. A class definition starts with the keyword class followed by the class name; and the class body enclosed by a pair of curly braces.
+class class_name{
+	<fields>        //any variable declared
+	<getters/setters>   //initialize and retrive
+	<constructors>        //allocate memory to objects
+	<functions>      //represent action of an object //also referred to as METHODS
+}
+
+FUNCTION: has starting letter small and other joint word capital
+ex. Widget buildApp
+           --------
+OBJECT: contains braces()
+ex.
+new LoginPage() => its a Object
+LoginPage()     => its a Object
+
+WIDGET:-
+--------
+Whole FLUTTER app is a widget made up of simple widgets
+
+widget tree:
+MYAPP
+>MaterialApp
+ >MyHomePage
+  >Scaffold
+   >>AppBar
+   >>Center
+     ->Column
+       -->Text
+       -->Text
+   >>Floating Action Button
+     ->Icon
+       
+       ### BASIC STRUCTURE ###
+
+void main(){
+	runApp(const MyApp());           //MYAPP 
+}
+
+class MyApp extends StatelessWidget {  //STATELESS WIDGET
+	
+	@override
+	Widget build(BuildContext context){
+		return MaterialApp(               //MATERIAL APP
+			title: 'Welcome to Flutter',
+			home: Scaffold(                  //HOME: SCAFFOLD
+				appBar: AppBar(                   //APPBAR
+					title: const Text('Welcome to Flutter'),     //TITLE
+				),
+				body: const Center(               //CENTER
+					child: Text('Hello World')                   //TEXT
+				)
+			)
+		)
+	}
+}
+==================================================
+import 'package:flutter/material.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+	//stateless widget
+	@override
+	Widget build(BuildContext build) {
+		//build context
+		return MaterialApp(
+			//material app
+			title: 'SINLGE LAYOUT',
+			theme: ThemeData(
+				primarySwatch: Colors.blue,
+			),
+			home: MyHomePage(), //home: homepage
+		);
+	}
+}
+
+class MyHomePage extends StatelessWidget {
+	//MyHomePage with logic
+	@override
+	Widget build(BuildContext context) {
+		return Scaffold(
+			appBar: AppBar(
+				title: Text("Overflow Widget"),
+			),
+			body: Center(
+				child: Container(
+					height: 50.0,
+					 width: 50.0,
+					 color: Colors.red,
+				),
+			));
+	}
+}
+
+==================================================
+
+    ### HOME: MyApp extends StatelessWidget > Inside StatelessWidget - MyHomePage > Class MyHomePage extends STATEFUL WIDGET >inner class STATEFUL WIDGET CLASS contain logic
+
+void main(){
+	runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget //STATELESS WIDGET
+@override
+Widget build(BuildContext context){
+	return MaterialApp(                  //MATERIAL APP
+		title: 'Button Click Count',
+		theme: ThemeData(                   //THEME
+			primarySwatch: Colors.blue
+		)
+		home: const MyHomePage              //HOME: MyHomePage
+	)
+}
+
+class MyHomePage extends StatefulWidget      //MyHomePage extends StatefulWidget
+ const MyHomePage
+ 
+ @override
+ State<MyHomePage> createState() => _MyHomePageState       //CREATE STATEFULWIDGET CLASS
+ }
+ 
+ class _MyHomePageState extends State<MyHomePage> {          //Add Logic inside STATEFULWIDGE CLASS
+	 int _counter = 0;
+	 
+	 void _incrementCounter(){
+		 setState(){
+			 _counter++;
+		}
+	}
+}
+
+
+
+---------------------------------------------------------------------------------
+Stateless Widget are Immutable, meaning that their properties can't change - all values are final
+
+Stateful Widget maintain the STATE that might CHANGE during the LIFETIME of the widget.
+1) Stateful Widget class that creates an INSTANCE of a 2) state Class
+2) State Class	 which contains logic
+
+create suggestion var in RandomState widget inner class to store suggestion
+create a listview in body using ListView.builder widget
+
+---------------------
+TYPES OF WIDGET:
+
+1. Visible (Output and Input)
+2. Invisible (Layout and Control)
+
+TEXT: -
+
+new Text(
+	'Hell World',
+	textAlign: textAlign.center,
+	style: new TextStyle(fontWeight: FontWeight.bold),
+)
+
+BUTTONS: -
+//FLAT BUTTON
+new FlatButton(
+	child: Text("Login"),
+			   on Pressed:(){
+				   //logic
+			};
+),
+
+//RAISED BUTTON 
+new RaisedButton(
+	child: Text("Login"),
+				 elevation: 5.0,
+				 onPressed:(){
+					 //LOGIC
+				};
+),
+
+//COUNTER SHOWING ON CLICKING BUTTON EXAMPLE
+body: Center(
+	child: Column(
+		maxAxisAlignment: MainAxiAlignment.center,
+		children: <WIDGET>[
+			const Text(
+			   'you have clicked this many times'   //showing text on body
+			),
+			Text(
+				'$_counter',                         //showing the count of _counter from floatingActionButton(which calculates count)
+		         style: Theme.of(context).textTheme.headline4, 
+			)
+		]
+	)
+),	
+
+floatingActionButton: floatingActionButton(
+	onPressed: _incrementCounter,         //counter logic on pressing button each time
+	tooltip: 'Increment',
+	child: const Icon(Icons.add),        //+ logo
+)
+---------------------------------
+MATERIAL APP:
+============
+
+MaterialApp Widget is a predefined class in a flutter. It is likely the main or core component of flutter. we can access all the other components and widgets provided by Flutter SDK 
+
+MaterialApp Widget is the starting point of your app, it tells Flutter that you are going to use Material components and follow the material design in your app.
+
+MaterialApp is a widget that introduces a number of widgets Navigator, Theme that are required to build a material design app.
+
+Scaffold Widget is used under MaterialApp, it gives you many basic functionalities, like AppBar, BottomNavigationBar, Drawer, FloatingActionButton, etc.
+
+The Scaffold is designed to be the single top-level container for a MaterialApp although it is not necessary to nest a Scaffold.
+----------------------------------
+SCAFFOLD:
+========
+
+it is mainly responsible for creating a base to the app screen on which the child widgets hold on and render on the screen. 
+It provides many widgets or APIs for showing Drawer, SnackBar, BottomNavigationBar, AppBar, FloatingActionButton, and many more.
+
+IT IS WIDGET WHICH PROVIDES FRAMEWORK TO ADD COMMON MATERIAL DESIGN ELEMENTS LIKE APPBAR, FLOATING ACTION BUTTONS, DRAWERS, ETC.
+-scaffold is mainly used in stateless widget
+
+SYNTAX: 
+	return Scaffold{
+		
+		//this is head just like in html
+		appBar: AppBar(
+			title: Text("Scaffold widgets"),
+		),
+		
+		//body
+		body: Center(
+			child: Container(),
+		),
+			
+	     //for footer we have many widgets like DRAWER etc
+		drawer: Drawer(),
+		)
+		
+	}
+	
+example:
+import 'package:flutter/material.dart';
+
+class HomePage extends StatelessWidget {
+	final int hours = 8;
+	final String name = "PiedPiper";
+	
+	@override
+	Widget build(BuildContext context){
+		return Scaffold(
+			appBar: AppBar(
+				title: Text("Scaffold Widget"),
+			),
+			body: Center(
+				child: Container(
+					child: Text("Welcome to $hours of flutter with $name"),
+				),
+			),
+			drawer: Drawer(),
+		);
+	}
+}
+
+
+STATE MANAGEMENT
+==============================================
+
+STATEFUL WIDGET:
+-------------------
+Statefull Widgets are used when You Need to reflect in Change in UI realtime, when a user performs a action.
+And you can use setState() method to trigger the new UI
+like cart button Icon changes to Done button icon when user ADDS PRODUCT TO CART.
+or ITEM REMOVED FROM CART MUST DISAPPEAR.
+
+Contains 1) STATE OBJECT
+         2) STATE WIDGET
+         
+         class Car extends StatefulWidget{
+			 const Car({Key key, this.title}): super(key:key);
+			 
+			 @override
+			 _CarState createState() => _CarState();
+		}
+		
+		class _CarState extends State<CAR>{
+		
+			@override
+			Widget build(BuildContext context){
+				return Container(
+					color: const Color(000),
+								 child: Container(
+									 child: Container(//child: Container())
+								)
+				);
+			}
+		}
+		
+		
+
+STATELESS WIDGET:
+don't have any state information, it's a static page.
+Examples: Text, Row, Column, Container, etc.
+
+class MyStatelessCarWidget extends StatelessWidget{
+	const MyStatelessCarWidget({Key key}): super(key: key);
+	
+	@override
+	Widget build(BuildContext context){
+		return Container(color: const Color(000));
+	}
+}
+
+REPRESH STATE IN STATELESS WIDGET:
+using import 'package:velocity_x/velocity_x.dart';
+
+* Create a AddMutation() WIDGET for adding items replace with _cart.add() method
+& also use AddMutation() in VxState.listen(context, to: [AddMutation]) to redraw the widget in statelesswidget
+or
+FOR REFRESHING ONLY CERTAIN/component of a screen
+> Use VxConsumer(   mutations: const {RemoveMutation},) instaed of Container: []
+or VxBuilder
+
+---------------------
+CONTAINER:
+Widget class which allows customization of CHILD CLASS. Used to add borders, padding, colors, margins, etc.
+entire row is placed in a container for adding margins and padding around the corner.
+
+---------------------
+LAYOUT A WIDGET:
+
+STEPS:
+1. Select a LAYOUT WIDGET
+2. CREATE A VISIBLE(input and output) WIDGET
+3. ADD VISIBLE  WIDGET TO LAYOUT WIDGET
+4. ADD LAYOUT WIDGET TO PAGE WHERE YOU WANT TO DISPLAY THE WIDGET
+
+
+TYPES OF LAYOUT WIDGET:
+
+1. SINGLE CHILD WIDGET :
+   >A widget which can have only 1 CHILD WIDGET inside the PARENT LAYOUT WIDGET.
+   e.g CONTAINER, PADDING, CENTER, SIZEDBOX, ASPECTRATIO, BASELINE, CONSTRAINEDBOX, CustomSingleChildLayout, FittedBox
+   
+2. MULTIPLE CHILD WIDGET
+  >ListView has nested Container, Card, Expanded etc or OWN BUILT COMPLEX WIDGET
+
+-----------------------
+FLUTTER GESTURES:
+
+Flutter divides the gesture system into two different layers, which are given below:
+
+* Pointers
+* Gestures
+
+Pointers:
+Pointers are the first layer that represents the raw data about user interaction. It has events, which describe the LOCATION and MOVEMENT of pointers such as touches, mice, and style across the screens. Flutter does not provide any mechanism to cancel or stop the pointer-events from being dispatched further. Flutter provides a LISTENER WIDGET to listen to the pointer-events directly from the widgets layer. The pointer-events are categories into mainly four types:
+
+PointerDownEvents
+PointerMoveEvents
+PointerUpEvents
+PointerCancelEvents
+
+GESTURES:
+---------
+It is the second layer that represents semantic actions such as tap, drag, and scale, which are recognized from multiple individual pointer events.
+Tap, DoubleTap, Drag, LongPress, Pan, Pinch
+
+Tap:
+----
+It means touching the surface of the screen from the fingertip for a short time and then releasing them. This gesture contains the following events:
+
+onTapDown
+onTapUp
+onTap
+onTapCancel
+Double Tap: It is similar to a Tap gesture, but you need to tapping twice in a short time. This gesture contains the following events:
+
+onDoubleTap
+Drag:
+-----
+It allows us to touch the surface of the screen with a fingertip and move it from one location to another location and then releasing them. Flutter categories the drag into two types:
+
+Horizontal Drag:
+----------------
+This gesture allows the pointer to move in a horizontal direction. It contains the following events:
+onHorizontalDragStart
+onHorizontalDragUpdate
+onHorizontalDragEnd
+
+Vertical Drag:
+-------------
+This gesture allows the pointer to move in a vertical direction. It contains the following events:
+onVerticalDragStart
+onVerticalDragStart
+onVerticalDragStart
+Long Press: It means touching the surface of the screen at a particular location for a long time. This gesture contains the following events:
+
+onLongPress
+Pan:
+----
+It means touching the surface of the screen with a fingertip, which can move in any direction without releasing the fingertip. This gesture contains the following events:
+
+onPanStart
+onPanUpdate
+onPanEnd
+Pinch: It means pinching (move one's finger and thumb or bring them together on a touchscreen) the surface of the screen using two fingers to zoom into or out of a screen.
+
+Gesture Detector:
+-----------------
+Provides support for all types of Gestures, primarly used for detecting USER GESTURES. It's STATELESS WIDGET which CONTAIN "Different Parameter for Different Touch" in its CONSTRUCTOR.
+-Multiple Gesture Detectors at a particular location.
+-GestureDetectors decides which to RECOGNIZE based on "WHICH OF ITS CALLBACKS ARE NON-NULL".
+-use onTap() event for using GestureDetector Process.
+
+EX
+/*
+ void main(){
+	 
+ } 
+ class DemoClass extends StatelessWidget{
+	 Widget build(BuildContext context) {
+	
+	 //RAW GESTURE DETECTOR
+	 return RawGestureDetector(
+		 gestures: {},
+		 behavior: HitTestBehavior.opaque,
+		 
+		 //PARENT CONTAINER
+		 child: Container(
+			 child: Center(
+				 
+				 //RAW GESTURE DETECTOR
+				 child: RawGestureDetector(
+					 gestures: {},
+					 
+					 //NESTED CONTAINER
+					 child: Container(),
+					 
+				),  // RawGestureDetector
+			),  //Center
+		), //Container
+		
+	);  //RawGestureDetector
+	 
+	} //BuildContext
+ }
+ */
+----------------------------------------------------------------
+FLUTTE STATE MANAGEMENT:
+========================
+The Stateless widget does not have any internal state. It means once it is built, we cannot change or modify it until they are initialized again. On the other hand, a Stateful widget is dynamic and has a state. It means we can modify it easily throughout its lifecycle without reinitialized it again.
+
+A state is information that can be read when the widget is built and might change or modified over a lifetime of the app.
+
+The "setState()" function allows us to set the properties of the state object that triggers a redraw of the UI.
+UI = YOUR BUILD MEHTOD(THE APPLICATION STATE)
+
+In Flutter, the state management categorizes into two conceptual types, which are given below:
+------------------------------------------------------------------------------------------------
+
+* Ephemeral State: 
+------------------
+UI STATE OR LOCAL STATE. STATE RELATED TO SPECIFIC WIDGET, WHICH CONTAINS A SINGLE WIDGET. 
+  - DATA REQUIRED BY -> SINGLE WIDGET -> EPHEMERAL STATE
+  -DON'T NEED TO USE STATE MANAGEMENT TECHNIQUE
+  -e.x. TextField
+  
+* App State:
+------------
+Application State or Shared State. It is different from the ephemeral state. It is a type of state that we want to share across various parts of our app and want to keep between user sessions.
+  -DATA REQUIRED BY -> MULTIPLE WIDGETS -> APP STATE
+  -It can be used GLOBALLY
+  -Ex. USER PREFERENCE, login info, notification in social networking app, shopping cart in e-commerce app, read/unread state of article in news app, etc.
+  
+  LIBRARY: PROVIDER PACKAGE
+  -------------------------
+     *ChangeNotifier
+     *ChangeNotifierProvider
+     *Consumer
+     
+     CHANGENOTIFIER: provides CHANGE notification to its listeners. Only need to use notifyListener() method to inform the listners.
+     CHANGENOTIFIERPROVIDER: It provides a INSTANCE of CHANGENOTIFIER to its DESCENDANTS.
+     CONSUMER: It just calls the provider in a new widget and delegates its build implementation to the builder.
+     
+     MULTIPROVIDER: LIST OF ALL DIFFERENT PROVIDERS USED WITHIN ITS SCOPE. Used when there is a need to provide more than one class.
+     
+======================================================================
+FLUTTER CONTAINER
+t is to note that this widget cannot render directly without any parent widget. We can use Scaffold widget, Center widget, Padding widget, Row widget, or Column widget as its parent widget.
+A basic container has a margin, border, and padding properties surrounding its child widget, 
+
+==================================================
+FLUTTER ROWS:
+
+If the child widgets need to fill the available horizontal space, we must wrap the children widgets in an Expanded widget.
+A row widget does not appear scrollable because it displays the widgets within the visible view. So it is considered wrong if we have more children in a row which will not fit in the available space.
+
+*If we want to make a scrollable list of row widgets, we need to use the ListView widget.
+
+We can control how a row widget aligns its children based on our choice using the property crossAxisAlignment and mainAxisAlignment.
+The row's cross-axis will run vertically, and the main-axis will run horizontally. See the below visual representation to understand it more clearly.
+
+======================================================
+FLUTTER COLUMNS:
+
+This widget arranges its children in a vertical direction on the screen. 
+
+If the child widgets need to fill the available vertical space, we must wrap the children widgets in an Expanded widget.
+
+If we want to make a scrollable list of column widgets, we need to use the ListView Widget.
+
+We can also control how a column widget aligns its children using the property mainAxisAlignment and crossAxisAlignment. The column's cross-axis will run horizontally, and the main axis will run vertically.
+
+=====================================================
+Text, TextFormFiled:
+
+Padding(
+	padding: const EdgeInsets.symmetric(vertical: 18.0, horizontal: 32.0),
+		child: Column (
+			children: [
+			TextFormField(
+				decoration: const InputDecoration(
+					hintText: "Enter Username",
+					labelText: "Username",
+				),
+			),
+			
+			TextFormField(
+				decoration: const InputDecoration(
+					hintText: "Enter Password",
+					labelText: "Password",
+				),
+			),
+			],
+			
+		),
+),
+=====================================================
+BUTTONS:
+
+Elevated Button:
+----------------
+login_page.dart
+
+child: Column(
+	children: [
+		ElevatedButton(
+			style: TextButton.styleFrom(
+				textStyle: const TextStyle(fontSize: 18),
+			),
+			onPressed: (){
+				//logic
+				Navigator.pushNamed(context, MyRoutes.homeRoute);
+			},
+			child: const Text("Login"),
+		),
+	]
+),
+
+Floating Action Button: Button which overlapes & floats on a Page, it remains there irrespective action on page like scroll, photo zoom until redirected to another page or out of scope
+----------------------
+floatingActionButton: FloatingActionButton(
+	onPressed:(){},
+										   child: const Icon(CupertinoIcons.cart),
+),
+=======================================================
+NAVIGATION: move from one to another
+
+Navigator:
+ex. from login button on login page to home Page
+
+login_page.dart
+---------------
+child: Column(
+	children: [
+	ElevatedButton(
+		style: TextButton.styleFrom(
+			textStyle: const TextStyle(fontSize: 18),
+		),
+		onPressed: (){
+			//logic
+			Navigator.pushNamed(context, MyRoutes.homeRoute);
+		},
+		child: const Text("Login"),
+	),
+	]
+),
+
+routes.dart
+-----------
+class MyRoutes {
+	static String loginRoute = "/login";
+	static String homeRoute = "/home";
+}
+
+main.dart
+---------
+import 'package:flutter/material.dart';
+import 'package:myapp/pages/login_page.dart';
+import 'package:myapp/utils/routes.dart';
+import 'pages/home_page.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+	@override
+	Widget build(BuildContext context) {
+		return MaterialApp(
+			//THEME
+			themeMode: ThemeMode.light,
+			theme: ThemeData(primarySwatch: Colors.blue),
+						   darkTheme: ThemeData(
+							   brightness: Brightness.dark,
+							  //
+							  fontFamily: GoogleFonts.lato().fontFamily, //whole app
+												primaryTextTheme:
+												GoogleFonts.latoTextTheme(), //only primary text of whole app
+						   ),
+					 
+					 //ROUTES: {Map<String, Widget Function(BuildContext)> routes = const <String, WidgetBuilder>{}}
+					 initialRoute: "/",
+					 routes: {
+						 "/": (context) => const LoginPage(),
+						   MyRoutes.homeRoute: (context) => HomePage(),
+						   MyRoutes.loginRoute: (context) => const LoginPage(),
+					 },
+		);
+	}
+}
+-------------------------------
+// Within the `FirstRoute` widget
+onPressed: () {
+	Navigator.push(
+		context,
+		MaterialPageRoute(builder: (context) => const SecondRoute()),
+	);
+}
+--------------------------------
+// Within the SecondRoute widget
+onPressed: () {
+	Navigator.pop(context);
+}
+
+URL NAVIGATION 2.0
+------------------
+
+IMPORT url_strategy
+
+main.dart
+void main(){ 
+	Vx.setPathUrlStrategy();  //NAVIGATOR INITIALIZATION
+	runApp( VxState(store: MyStore(),
+					child: const MyApp())
+	// DevicePreview(
+	//   enabled: !kReleaseMode,
+	//   builder: (context) => MyApp(), // Wrap your app for device preview
+	// ),
+	);
+}
+
+class MyApp extends StatelessWidget {
+	const MyApp({Key? key}) : super(key: key);
+	
+	@override
+	Widget build(BuildContext context) {
+		return MaterialApp.router(     //ROUTES
+			//preview
+			// useInheritedMediaQuery: true,
+			// locale: DevicePreview.locale(context),
+			// builder: DevicePreview.appBuilder,
+			//THEME
+			themeMode: ThemeMode.dark,
+			theme: MyTheme.lightTheme(context),
+								  darkTheme: MyTheme.darkTheme(context),
+								  
+								  debugShowCheckedModeBanner: false,
+							
+							routeInformationParser: VxInformationParser(),
+								  routerDelegate: VxNavigator(routes: {
+									  "/": (_,__) => const MaterialPage(child: LoginPage()),
+															  MyRoutes.homeRoute: (_,__) => const MaterialPage(child: HomePage()),
+															  MyRoutes.loginRoute: (_,__) => const MaterialPage(child: LoginPage()),
+															  MyRoutes.cartRoute: (_,__) => const MaterialPage(child: CartPage()),
+															  MyRoutes.productDetailsRoute: (uri, _) {
+																  final catalog = (VxState.store as MyStore).catalog.getById(int.parse(Uri.queryParameters["id"]));
+																  return MaterialPage(child: ProductDetails(catalog: catalog));
+															  },
+															  
+								  }),
+
+login_page.dart
+
+class _LoginPageState extends State<LoginPage> {
+	String name = "";
+	bool changeButton = false; //for animation of login button
+	
+	//a global key for the form widget to be used globally
+	final _formKey = GlobalKey<FormState>();
+	moveToHome(BuildContext context) async {
+		//if at currentState every Validation is passed then only GO TO ROUTE using login button
+		if (_formKey.currentState!.validate()) {
+			//now to change the state on login button click to show animation
+			setState(() {
+				changeButton = true;
+			});
+			
+			context.vxNav.push(Uri.parse(MyRoutes.homeRoute));
+			
+			
+
+Catalog_list.dart
+
+PRODUCT ID ON URL 
+
+class CatalogList extends StatelessWidget{
+	const CatalogList({Key? key}) : super(key: key);
+	
+	@override 
+	Widget build(BuildContext context){
+		return !context.isMobile? GridView.builder(
+			gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, crossAxisSpacing: 20),
+												   
+												   shrinkWrap: true,
+											 itemCount: CatalogModel.items.length,
+											 itemBuilder: (context, index) {
+												 //final catalog = CatalogModel.items[index]; ORg =
+												 final catalog = CatalogModel.items[index];
+												 return InkWell(
+													 //Navigate from homeScreen to ProductDetails Page of Item of that Catalog
+													 onTap: () => context.vxNav.push(Uri(path: MyRoutes.homeRoute, queryParameters: {"id": catalog.id.toString()}), params: catalog), 
+																child: CatalogItem(catalog: catalog, key: null,
+																)
+												 );
+=====================================================
+
+CONTAINER:
+
+Make A Widget CLICKABLE USING "Gesture Detector: doesn't give ripple effect" or "Inkwell: gives some effect of click"
+
+InkWell(
+	onTap: (){
+		Navigator.pushNamed(context, MyRoutes.homeRoute);
+	},
+	child: Container(
+		width: 127,
+		height: 45,
+		alignment: Alignment.center,
+		child: const Text("Login",
+						  style: TextStyle(
+							  color: Colors.white,
+						 fontSize: 21, 
+						  ),
+		),
+		decoration: BoxDecoration(
+			color: Colors.blue,
+			borderRadius: BorderRadius.circular(8),
+		),
+	),
+),
+
+=======================================================
+ANIMATED CONTAINER:
+
+InkWell needs to used within Material Widget.
+
+declare bool changeButton = false;
+
+Inside InkWell Widget button
+
+Material(
+	color: Colors.blue,
+	//Decoration needs to given to Material not inside InkWell
+	borderRadius: BorderRadius.circular(changeButton ? 70 : 8),
+		 
+		 child: InkWell(
+			 onTap: () async {
+				 //now to change the state on login button click to show animation
+				 setState(() {
+					 changeButton = true;
+				 });
+				 await Navigator.pushNamed(context, MyRoutes.homeRoute);
+				 //After Login if the User comes back to login screen then it resets to normal Login BUtton without animation
+				 setState(() {
+					 changeButton = false;
+				 });
+			 },
+			 child: AnimatedContainer(
+				 duration: const Duration(seconds: 1),
+									  //conditional statement for animation when changebutton = true;
+									  width: changeButton ? 70 : 130,
+							 height: 50,
+							 alignment: Alignment.center,
+							 child: changeButton
+							 ? Icon(Icons.done, color: Colors.white)
+							 : const Text(
+								 "Login",
+					 style: TextStyle(
+						 color: Colors.white,
+					   fontSize: 20,
+					 ),
+							 ),
+			 ),
+		 ),
+),
+
+
+==========================================================
+INK can also be used instead of CONTAINER
+
+InkWell(
+	//animate button to red from primary color on click
+	splashColor: Colors.red,
+	onTap: () async {
+		//now to change the state on login button click to show animation
+		setState(() {
+			changeButton = true;
+		});
+		await Future.delayed(const Duration(seconds: 1));
+		Navigator.pushNamed(context, MyRoutes.homeRoute);
+	},
+	child: Ink(
+		//Ink can be used instead of Container or AnimatedCointer for More features.
+		//conditional statement for animation when changebutton = true;
+		width: changeButton ? 70 : 130,
+		height: 50,
+		
+		child: changeButton
+		? const Icon(Icons.done, color: Colors.white)
+		: const Text(
+			"Login",
+			style: TextStyle(
+				color: Colors.white,
+				fontSize: 20,
+			),
+		),
+		decoration: BoxDecoration(
+			color: Colors.blue,
+			
+			borderRadius:
+			BorderRadius.circular(changeButton ? 70 : 8),
+		),
+	),
+),
+================================================================
+Login Button:
+Made with InkWell & TextFormField Widget with Text Validation using Form Widget.
+
+Form:
+
+create a form widget
+create a global form key
+create TextFormField
+insert key: globalFormKey
+inside moveToHome create _formKey.currentState!.validate() so that it moves to Next Route only after form is validated
+add Validator: (value){} inside Username TextFormField and Password TextFormField.
+
+import 'package:flutter/material.dart';
+import 'package:myapp/utils/routes.dart';
+
+class LoginPage extends StatefulWidget {
+	const LoginPage({Key? key}) : super(key: key);
+	
+	@override
+	State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+	String name = "";
+	bool changeButton = false; //for animation of login button
+	
+	//a global key for the form widget to be used globally
+	final _formKey = GlobalKey<FormState>();
+	moveToHome(BuildContext context) async {
+		//if at currentState every Validation is passed then only GO TO ROUTE using login button
+		if (_formKey.currentState!.validate()) {
+			//now to change the state on login button click to show animation
+			setState(() {
+				changeButton = true;
+			});
+			Navigator.pushNamed(context, MyRoutes.homeRoute);
+			//After Login if the User comes back to login screen then it resets to normal Login BUtton without animation
+			setState(() {
+				changeButton = false;
+			});
+		}
+	}
+	
+	@override
+	Widget build(BuildContext context) {
+		return Material(
+			color: Colors.white,
+			//child: Center(
+			/*To make Column Page Elements responsive on both Large Screens as well as small
+			 *         screen wrap Column in Scroll.
+			 *         >>This fix the error of Overflow on small screens
+			 */
+			child: SingleChildScrollView(
+				child: Form(
+					key: _formKey,
+				child: Column(
+					children: [
+					Image.asset(
+						"assets/images/login_image.png",
+				 fit: BoxFit.scaleDown,
+					),
+				  
+				  //for spacing between two as well as any content inside it
+				  const SizedBox(
+					  height: 20.0,
+				  ),
+				  
+				  Text(
+					  "Welcome $name",
+		   // ignore: prefer_const_constructors
+		   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+				  ),
+				  const SizedBox(
+					  height: 20.0,
+				  ),
+				  
+				  Padding(
+					  padding: const EdgeInsets.symmetric(
+						  vertical: 18.0, horizontal: 32.0),
+			  child: Column(
+				  children: [
+				  TextFormField(
+					  decoration: const InputDecoration(
+						  hintText: "Enter Username",
+						  labelText: "Username",
+					  ),
+					//username validation
+					validator: (value) {
+						if (value!.isEmpty) {
+							return ("Username can't be empty");
+						}
+						return null;
+					},
+					//$name in front of welcome
+					onChanged: (value) {
+						name = value;
+						setState(
+							() {}); //Now in statefulwidget we have to build whole screen again
+						//so call BuildState again using setState() method to change the state
+					},
+				  ),
+				   TextFormField(
+					   obscureText: true,
+					 decoration: const InputDecoration(
+						 hintText: "Enter Password",
+						 labelText: "Password",
+					 ),
+					 //password validation
+					 validator: (value) {
+						 if (value!.isEmpty) {
+							 return ("Password can't be empty");
+						 } else if (value.length < 6) {
+							 return ("Password length should be more than 6");
+						 }
+						 return null;
+					 },
+				   ),
+				   const SizedBox(height: 30.0),
+							Material(
+								color: Colors.blue,
+				//Decoration needs to given to Material not inside InkWell
+				borderRadius:
+				BorderRadius.circular(changeButton ? 70 : 8),
+									 
+									 child: InkWell(
+										 onTap: () => moveToHome(context),
+													child: AnimatedContainer(
+														duration: const Duration(seconds: 1),
+																			 //conditional statement for animation when changebutton = true;
+																			 width: changeButton ? 70 : 130,
+									  height: 50,
+									  alignment: Alignment.center,
+									  child: changeButton
+									  ? Icon(Icons.done, color: Colors.white)
+									  : const Text(
+										  "Login",
+						style: TextStyle(
+							color: Colors.white,
+					   fontSize: 20,
+						),
+									  ),
+													),
+									 ),
+							),
+				  ],
+			  ),
+				  ),
+					],
+				),
+				),
+			),
+			//),
+		);
+	}
+}
+
+
+
+==================
+DRAWER:
+
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+class MyDrawer extends StatelessWidget {
+	const MyDrawer({Key? key}) : super(key: key);
+	
+	@override
+	Widget build(BuildContext context) {
+		const imageUrl = "https://media-exp1.licdn.com/dms/image/C5603AQGzUsChUqKtKw/profile-displayphoto-shrink_200_200/0/1620734238429?e=2147483647&v=beta&t=btD5202lcTiTmiZBl4hTPf-cC0tMocIsMAMcjjAwtiI";
+		return Drawer(
+			
+			child: Container(
+				color: Colors.blue,
+				
+				child: ListView(
+					padding: EdgeInsets.zero,        
+					
+					children: const [
+					DrawerHeader(
+						
+						padding: EdgeInsets.zero,
+				  child: UserAccountsDrawerHeader(
+					  margin: EdgeInsets.zero,
+					  currentAccountPicture: CircleAvatar(backgroundImage: NetworkImage(imageUrl)),
+												  accountName: Text("Ayush"),
+												  accountEmail: Text("email@gmail.com"),
+				  ),
+					),
+					
+					//ListTile: for adding in left icon and right text with ontap() feature
+					ListTile(
+						leading: Icon(
+							CupertinoIcons.home,
+					color: Colors.white,
+						),
+			  title: Text(
+				  "Home",
+				 textScaleFactor: 1.2,
+				 style: TextStyle(
+					 color: Colors.white,
+				 ),
+			  ),
+					),
+					
+					ListTile(
+						leading: Icon(
+							CupertinoIcons.profile_circled,
+					color: Colors.white,
+						),
+			  title: Text(
+				  "Profile",
+				 textScaleFactor: 1.2,
+				 style: TextStyle(
+					 color: Colors.white,
+				 ),
+			  ),
+					),
+					
+					ListTile(
+						leading: Icon(
+							CupertinoIcons.mail,
+					color: Colors.white,
+						),
+			  title: Text(
+				  "Contact us",
+				 textScaleFactor: 1.2,
+				 style: TextStyle(
+					 color: Colors.white,
+				 ),
+			  ),
+					),
+					
+					
+					],
+				),
+				
+			),
+			
+			
+		);
+		
+	}
+}
+
+==================================================
+LISTVIEW:
+
+use ListTile() widget to add leading image and title text.
+use SwitchListTile() to for switch in list
+there are many more widgets like expand widget etc.
+
+=================================================
+BUTTONS/CLICKABLES:
+
+1) onTap() Property
+
+InkWell Widget:
+
+get onTap() property for any WIDGET, WRAP that Widget WITH InkWell Widget.
+----------------------------------------------------
+2) onPressed() Property
+
+ElevatedButton(
+	onPressed: (){},
+)
+=================================================
+ANIMATION:
+
+use Hero(),
+wrap image, CatalogImage widget in Hero
+
+Hero(
+	tag:key(catalog.id.toString());
+	child: Image()
+)
+
+hero gives expand animation.
+like Expanding a image when clicked to open it.
+expanding effect when navigating to new page.
+===============================================
+BADGES IN FLUTTER:
+
+https://www.geeksforgeeks.org/flutter-implementing-badges/
+===============================================
+DATA HANDELING using MODELS:
+--------------
+
+CART_PAGE ALGO: -
+=================
+cart page consists of a stateless widget with a column
+* having CartTotal() widget for total price & "Buy button"
+* having CartList() widget for showing Items list as a placeholder in column
+* Need a CartModel(Item & its components Structure) to fetch data items to be shown in Cart list
+=================================================
+NETWORK FETCH DATA:
+
+* First we fetched DATA from LOCAL JSON FILE, now we will fetch data from JSON file at a URL
+final url = "https://api.npoint.io/8d733da5ae7ebfe8581f";
+final response = await http.get(Uri.parse(url));  //this gives response from url
+final catalogJson = response.body;  //get json data 
+
+Data from Web may not Load no Certain Devices like Web, macos, ios, android or windows 
+ON different different devices SOURCE CODE needs Internet Access Permission.
+Make sure you give Permission before running on each device or operating system
+========================================================
+UI FOR DIFFERENT DEVICES:
+
+* use context.isMobile and add condition statements with alternating code or alternating dimentional values
+* put condition to check which device is used & Use that code for that device.
+
+catalog_list.dart widget
+
+class CatalogList extends StatelessWidget{
+	const CatalogList({Key? key}) : super(key: key);
+	
+	@override 
+	Widget build(BuildContext context){
+		return !context.isMobile? GridView.builder(
+			gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
+												   
+												   shrinkWrap: true,
+											 itemCount: CatalogModel.items.length,
+											 itemBuilder: (context, index) {
+												 //final catalog = CatalogModel.items[index]; ORg =
+												 final catalog = CatalogModel.items[index];
+												 return InkWell(
+													 //Navigate from homeScreen to ProductDetails Page of Item of that Catalog
+													 onTap: () => Navigator.push(context, MaterialPageRoute(
+														 builder: (context)=> ProductDetails(
+															 catalog: catalog,
+														 )
+													 )
+													 ),
+							child: CatalogItem(catalog: catalog, key: null,));
+												 
+											 },
+		):ListView.builder(
+			shrinkWrap: true,
+			itemCount: CatalogModel.items.length,
+			itemBuilder: (context, index) {
+				//final catalog = CatalogModel.items[index]; ORg =
+				final catalog = CatalogModel.items[index];
+				return InkWell(
+					//Navigate from homeScreen to ProductDetails Page of Item of that Catalog
+					onTap: () => Navigator.push(context, MaterialPageRoute(
+						builder: (context)=> ProductDetails(
+							catalog: catalog,
+						)
+					)
+					),
+				   child: CatalogItem(catalog: catalog, key: null,));
+				
+			},
+		);
+	}
+}
+
+=========================================================================

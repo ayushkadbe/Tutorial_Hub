@@ -1,0 +1,173 @@
+PHP:
+* It's a Dynamic language.
+* It's not Case Sensitive, uppercase & lowercase have same meaning. e.g. echo & Echo are same
+
+LOCALHOST
+http://localhost/projectName/
+http://localhost/myphp/
+
+PHP MYADMIN
+http://localhost/phpmyadmin/
+
+START XAMPP ON LINUX:
+sudo /opt/lampp/lampp start
+
+XAMPP CONTROL PANEL:
+sudo /opt/lampp/manager-linux-x64.run
+
+STEP:
+1) create a input field/html form <form action="index.php" method="post">
+2) create a database using xampp  phpmyadmin  at http://localhost/phpmyadmin > new
+3) create a MYSQL database connection using
+  a. MySQL function  or 
+  b. PHP dataobjects
+
+PRINT:
+------
+<?php
+  echo "Hello World! This is printed using php"
+  //secret algorithm // even this text is HIDDEN in BACKEND, not visible in HTML INDEX
+  /*
+   */
+?>
+
+echo"<br>"
+echo"<h>Thi is heading</h>"
+
+The Above PHP code will NOT BE VISIBLE In HTML INDEX,
+as PHP PULL in backend is KEPT SECRET.
+
+VARIABLES:
+---------
+Php is a Dynamic Language, we don't need to specify which DATATYPE WE ARE USING.
+
+$var1;
+$var2;
+
+OPERATORS:
+---------
+
+arithmetic: *,+,-,/
+
+assignment: =, -=, +=
+
+comparion operators: ==,!=, >=, <=
+  echo var_dump(1==4)  output: bool(false)
+  
+  
+increment decrement:
+echo $var++;
+echo $var--;
+echo ++$var;
+echo --$var;
+
+Conditional Operators:
+&& and
+|| or
+! not
+xor 0 & 1 = true, 0 - 0, 1- 1 = false
+
+Conditional Statement
+if-else Statement
+
+DATATYPES:
+-----------
+1. String
+
+strlen, strrev, strpos, str_word_count,
+
+<?php
+$str = "this is a string";
+echo strlen($str);
+echo "<br>";
+
+echo strlen("this is a string");
+echo str_word_count("this is a string");
+
+$str = "this is a string";
+echo "this is joint text ".$str;
+?>
+
+2. Integer
+3. Float
+4. Boolean
+5. Array
+   $languages = array("Python", "C++", "java");
+   echo count($languages)
+   echo $languages[2];
+6. Object
+
+CONSTANTS
+---------
+
+define('PI', 3.14);
+
+echo PI;
+
+LOOPS IN PHP
+============
+1) for loop
+--------	
+for($i =o; $i <10; $i++){
+	Statement;
+}
+
+ARRAY ITERATION with  FOREACH loop
+----------------------------------
+
+$lang = array("python", "java", "php", "dart");
+foreach($lang as $value){
+	echo "<br> The value is ";
+	echo $value;
+}
+
+	
+2) while loop
+----------
+	$var = 0;
+while($var <= 5){
+	echo "<br> var is : ";
+	echo $var;
+	echo "<Br>";
+	$var++;
+}
+
+ARRAY ITERATION with while
+-------------------------
+$lang = array("python", "java", "dart");
+$a = 0;
+while($a < count($lang)){
+	echo "<br> The lang is: ";
+	echo $lang[$a];
+	$a++;
+}
+
+
+3) do while: It runs first iteration withou checking, after the check condition > it runs 2nd iteration according to it.
+
+
+$a = 30;
+do{
+	echo "The value of a is: ";
+	echo $a;
+	$a++;
+}while($a< 10);
+
+
+$a = 0;
+do{
+	echo "The value of a is: ";
+	echo $a;
+	$a++;
+}while($a< 10);
+
+FUNCTION
+---------
+
+<?php
+function printNum($myNum){
+	echo "The number is $myNum";
+}
+printNum(34);
+?>
+

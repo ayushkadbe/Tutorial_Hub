@@ -1,0 +1,8 @@
+https://www.tutorialspoint.com/software_engineering/software_design_basics.htm
+https://www.javatpoint.com/software-engineering-software-design
+https://www.tutorialspoint.com/system_analysis_and_design/system_design.htm#
+https://www.tutorialspoint.com/software_architecture_design/data_flow_architecture.htm
+https://www.tutorialspoint.com/microservice_architecture/microservice_architecture_scaling.htm
+https://www.tutorialspoint.com/microservices_design_patterns/index.htm
+https://www.tutorialspoint.com/software_engineering/software_design_basics.htm
+https://www.tutorialspoint.com/sdlc/index.htm#
