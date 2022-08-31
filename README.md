@@ -1,2 +1,2 @@
 # Notes
-Programming languages, Frameworks, DevTools Summary Notes
+Summary Notes on:  Programming languages, Frameworks, DevTools, Softwares & Hardwares
