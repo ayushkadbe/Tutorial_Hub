@@ -1,0 +1,13 @@
+  sudo apt update && sudo apt install parrot-desktop-<desktop environment>
+  sudo apt update && sudo apt install parrot-desktop-kde
+  
+  LIST:
+  ls -l /usr/share/xsessions/
+  
+  SWITCH:
+  sudo update-alternatives --config x-session-manager
+  
+  DELETE:
+  sudo apt-get remove mate-desktop
+  sudo apt-get purge mate-desktop
+  sudo apt-get purge --auto-remove mate-deskto
