@@ -226,3 +226,8 @@ postgres=#
 NANO EDITOR:
 
 sudo nano /etc/postgresql/13/main/pg_hba.conf
+
+--------------------------------------------
+SHORTCUTS:
+
+View HIDDEN FILES: Ctrl + H
