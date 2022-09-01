@@ -1,0 +1,105 @@
+Firebase:
+
+Hosting
+Cloud Messaging
+Authentication
+Real-time Database
+FireStore
+UI Testing with TestLabs
+
+1) Google Analytics for APP with Firebase
+time spent, active users,
+
+2) App Development
+ backend services & development suite without need of mangaing BACKEND ARCHITECTURE OR INFRASTRUCTURE.
+ provides libraries & modules for USE instead of making from scratch.
+
+3) Growth & user management
+ *adwords, Invites, notification
+ 
+4) Emulator Suites
+ * for testing Firebase with app FireStore Emulator 
+ 
+ Authentication:
+ backend services, ui libraries to authencate users. 
+ So their's no need to buil from scratch taking months & no hassle of team for managing that Authentication System.
+ * auto account merging
+ * singin method(3rd party login systems like fb, google, git)
+ * number of users
+ 
+ FireStore:
+ NoSQL document database
+ * store, sync, & query data for Application
+ * No tables, rows > Documents organised in collection
+ * key value pairs with Security Tools
+ * it uses match statements which identify documents in DB & Allow exressions which control ACCESS to those DOCUMENTS
+ * every db request to FIRESTORE from mobile/web client library is evaluated against these Security before read/write.
+ 
+ RealTime DB
+ * one big JSON OBJECT that can be managed in real-time..
+ * Firebase provides APP with CURRENT DATA aswell UPDATE TO THOSE DATA using REAL-TIME SYNCHING.
+ 
+ Firebase Storage:
+ * Solution for storing user-generated content like IMAGES, VIDEOS from ios, android, web.
+ * uses simple folder-file system to structure & securely store dat
+ * easy upload from system, & can be accesse from any device
+ 
+ Hosting
+ * secure CDN content delivery network
+ * used to DELIVER STATIC CONTENT like HTML, CSS, JAVASCRIPT using servers close to USERS
+ * setup without/with CUSTOM DOMAIN
+ 
+ Cloud Functions:
+ * serverless framework for RUN mobile backend code without managing servers.
+ * execute backend code to RESPOND TO HTTPS & firebase requests
+ 
+ Google Cloud:
+ * Used for storing TypeScript, JAVASCRIPT code & can be EXECUTED within a Managed environment.
+ * reduce REQUIREMENT of scaling & managing servers.
+
+ Machine Learning:
+ -----------------
+ SDK for using google machine learning in MOBILE APPS.
+ 
+ 
+ RELEASE & MONITORING:
+ ====================
+ CRASHLYTICS: code snippet to monitor Crashtest.
+ 
+ TESTLAB: firebase test our app completely from filling form to push buttons
+ 
+ ANALYTICS: Store data about USER BEHAVIOUR in our android/ios apps
+ 
+ ENGAGE:
+ =======
+ A/B tesing: testing new feature in app like
+             * remote config: testing app with several parameter with multiple values, variants for app.
+             * cloud Messaging
+             * In-app messaging
+             
+             TEST for some user > THEN rollout feature for WHOLE Audience.
+              
+  Firebase Cloud Messaging is for sending the usual push notifications for an app appearing on the phone's status bar. FOR FREE server > to app NOTIFICATION
+  
+  Firebase In-App Messaging is to display messages "in the app" to users who are currently using the app.
+  
+  Remote Config: Publish Updates to USERS IMMEDIATELY WITHOUT NEED TO PUBLISH NEW VERSION.
+ * wish to change colors, layout, promotional of seasonal options
+ 
+ 
+ USECASES
+ ==========
+ * Dynamic link with custom parameters for AUTHENCATION to APP with fb, git, google etc.
+  -no need for manual entering user details to > form > then servers
+  
+ * Progressively Roll Out New Features
+  - feature for limited user > get feedback > testing> rollout to large scale audience.
+  
+ * User Journey flow acroos different devics.
+  -smooth management of USER DATA SYNC/ USER SESSION & USER ACTIVITY on web, ios or any other device
+  
+  * Optimize ads based on ANALYTICS
+  
+  * Manage 3rd PARTY PAYMENTS without OWN SERVERS.
+   - TO enable IN-APP PURCHASES, firebase help DEVS to integrate 3rd party payment APIs without NEED TO MANAGE "SERVER TO RUN PAYMENT FEATURE"
+  
