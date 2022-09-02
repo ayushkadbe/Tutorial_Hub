@@ -231,3 +231,34 @@ sudo nano /etc/postgresql/13/main/pg_hba.conf
 SHORTCUTS:
 
 View HIDDEN FILES: Ctrl + H
+
+---------------------------------------------
+How to Create a SHORTCUT to a Application
+
+sudo apt update && sudo apt install wget -y
+
+wget https://dl.pstmn.io/download/latest/linux64
+
+sudo tar -xvf linux64 -C /usr/bin
+
+echo 'export PATH="$PATH:/usr/bin/Postman"' >> ~/.bashrc
+Postman
+
+sudo nano /usr/share/applications/Postman.desktop
+
+paste below content
+[Desktop Entry]
+Name=Postman API Tool
+GenericName=Postman
+Comment=Testing API
+Exec=/usr/bin/Postman/Postman
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Icon=/usr/bin/Postman/app/resources/app/assets/icon.png
+StartupWMClass=Postman
+StartupNotify=true
+
+Save: Ctrl + O > Enter Close editor: Ctrl + X
+
+cp /usr/share/applications/Postman.desktop ~/Desktop/
