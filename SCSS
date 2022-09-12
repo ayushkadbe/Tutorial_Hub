@@ -1,0 +1,92 @@
+SASS-  CSS
+SCSS-  CSS 3
+
+SCSS - CSS PREPROCESSORS
+
+.scss file in converted to .css property by "LIVE SASS COMPILER EXTENSION"
+
+Sass has features that don't exist in CSS yet like nesting, mixins, inheritance, and other nifty goodies that help you write robust, maintainable CSS.
+
+Once you start tinkering with Sass, it will take your preprocessed Sass file and save it as a normal CSS file that you can use in your website.
+
+=========================
+VARIABLES:
+
+=========================
+NESTING:
+
+=========================
+PARTIALS:
+   _partial.scss file for use of partial scss and that should not be generate into a .css file. SASS parials are used using @use rule.
+
+==========================
+MODULE:
+    SASS don't have to be writte in same file, so they are split in different PARTIAL SCSS file, where we can refer to them using @use rule.
+    SASS file as a module, i.e WE CAN REFER to its variables, mixins, & functions in your SASS file with a namespace based on the filename.
+    
+    example:
+    _base.scss
+    
+    $font-stack: TIMES NEW ROMAN;
+	$primary-color: #333;
+    
+    body{
+		font: 100% $font-stack;
+		color: $primary-color;
+	}
+	
+	//styles.scss
+	
+	@use 'base';
+	
+	.inverse{
+		background-color: base.$primary-color;
+		color: white;
+	}
+	
+===========================
+MIXINS:	Some thing in CSS are tedious to write. A MIXIN lets to make a GROUP OF CSS DECLARATIONS THAT YOU WANT TO REUSE THROUGHTOUT YOUR SITE.
+
+   @mixin theme($theme: DarkGrey) {
+	   background: $theme;
+	   box-shadow: 0 0 1px rgba($theme, .25);
+	   color: #fff;
+   }
+   
+   //other things will remain same for .alert from @mixin theme, just theme: is changed from default to DarkRed;
+   
+   .info{
+	   @include theme;
+   }
+   
+   .alert{
+	  @include theme($theme: DarkRed);   
+   }
+   
+ ============================  
+EXTENDED INHERITANCE:
+
+Using @extend lets you share a set of CSS properties from ONE SELECTOR TO ANOTHER.
+A placeholder class is a special type of class that only prints when it is extended, and can help keep your compiled CSS neat and clean.
+
+//placeholder class
+%message-shared{
+	border: 1px solid #ccc;
+	padding: 10px;
+	color: #333;
+}
+
+.message{
+	//class needs to be extended to use the properties of PLACEHOLDER CLASS
+	@extend %message-shared
+}
+
+=======================
+OPERATOR:
+
+@use "saas:math";
+
+article[role="main"]{
+	width: math.div(600px, 960px) * 100%;
+}
+======================
