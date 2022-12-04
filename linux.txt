@@ -175,14 +175,19 @@ userdel username
 remove
 userdel -r username
 
-kill all process
-sudo killall -u username
 
 force delete
 userdel -f username
 
 sudo deluser username
 sudo deluser --remove-home username
+
+KILL ALL PROCESS
+----------------
+sudo killall -u username
+sudo killall mysqld
+
+
 -------------------------------------------
 USER ADD 
 
