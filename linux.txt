@@ -192,7 +192,12 @@ sudo killall mysqld
 USER ADD 
 
 sudo adduser username
+--------------------------------------------
+Debian List all Running Services
 
+$ systemctl list-units --type=service --state=running.
+$ systemctl --type=service --state=running.
+$ pstree.
 
 
 -------------------------------------------
