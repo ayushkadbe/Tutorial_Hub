@@ -51,7 +51,11 @@ git commit -m "Add submodule"
 git push (push these changes to the Parent repository)
 
 https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github
+===================================================================
+git switch focuses on branches while git checkout targets commits
 
+git switch main
+git switch multi_tab
 ===================================================================
 Working Directory: Directory of Project you are currently working on
 
