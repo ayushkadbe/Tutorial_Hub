@@ -1,0 +1,67 @@
+* Installs virtualenv
+pip install virtualenv
+
+-------------------
+* Once installed, new virtual environment is created in a folder.
+mkdir newproj
+cd newproj
+virtualenv venv
+
+* To activate corresponding environment, on Linux/OS X, use the following −
+". venv/bin/activate"
+
+--------------------
+* Project Folder Structure: Create  your html files in my_project/templates/    and python file inside my_project/
+my_project/
+  templates/    
+    index.html
+    settings.html
+  venv/
+  Hello.py
+  
+-------------------  
+* Hello.py
+from flask import Flask, render_template
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+   return render_template('index.html')
+
+@app.route('/settings')
+def settings():
+   return render_template('settings.html')
+
+if __name__ == '__main__':
+   app.run(debug = True)
+   
+--------------------   
+* index.html
+<!doctype html>
+<html>
+   <body>
+   
+      <h1>INDEX</h1>
+      
+   </body>
+</html>
+
+--------------------   
+* settings.html
+<!doctype html>
+<html>
+   <body>
+   
+      <h1>SETTINGS</h1>
+      
+   </body>
+</html>
+
+-----------------  
+* Run in shell
+python Hello.py
+
+Index
+http://127.0.0.1:5000     
+Settings
+http://127.0.0.1:5000/settings
