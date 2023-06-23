@@ -19,7 +19,12 @@ git push -f origin main
 git push --set-upstream origin branchName1
 //There are many branches created for a project on a device.
 //Then the branchName1 will be pushed to github as a new branch other than main branch.
+------------------
+COMMIT unstaged work on current branch to a new branch
 
+git checkout -b your-new-branch
+git add <files>
+git commit -m <message>
  
 ------------------
 Push another branch of same project
