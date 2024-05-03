@@ -1,0 +1,19 @@
+
+
+THE LEGAL PERSPECTIVE
+* IT ACT:
+The Information Technology Act, 2000 (also known as ITA-2000, or the IT Act) is an Act of the Indian Parliament (No 21 of 2000) notified on 17 October 2000. It is the primary law in India dealing with cybercrime and electronic commerce.
+Secondary or subordinate legislation to the IT Act includes the Intermediary Guidelines Rules 2011 and the Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021.
+
+*INDIAN PENAL CODE, 1860(IPC):
+The Indian Penal Code (IPC) is the official criminal code of India. It is a comprehensive code intended to cover all substantive aspects of criminal law. 
+
+*Information Technology Rules, 2021
+The Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021 is secondary or subordinate legislation that suppresses India's Intermediary Guidelines Rules 2011.[a][1][2] The 2021 rules have stemmed from section 87 of the Information Technology Act, 2000 and are a combination of the draft Intermediaries Rules, 2018 and the OTT Regulation and Code of Ethics for Digital Media.[3][4][5]
+
+* COMPANIES ACT 2013:
+The Companies Act 2013 is an Act of the Parliament of India on Indian company law which regulates incorporation of a company, responsibilities of a company, directors, dissolution of a company. 
+
+* CYBERSECRUITY FRAMEWORK (NCFS)
+Cyber security frameworks are sets of documents describing guidelines, standards, and best practices designed for cyber security risk management. The frameworks exist to reduce an organization's exposure to weaknesses and vulnerabilities that hackers and other cyber criminals may exploit.
+
